@@ -44,7 +44,7 @@ export const config: SiteConfig = {
       'Lifelong Learner',
     ],
     bio: [
-      '10+ years building and leading engineering platforms that power healthcare at scale. '
+      '13+ years building and leading engineering platforms that power healthcare at scale. '
         + 'I thrive at the intersection of deep technical ownership and organizational impact: '
         + 'architecting distributed systems, defining platform strategy, and raising the engineering bar '
         + 'for the teams around me.',
@@ -63,6 +63,21 @@ export const config: SiteConfig = {
     tagline: '13+ years building platforms, growing teams, and delivering impact in healthcare technology.',
     entries: [
       {
+        id: 'independent',
+        company: 'Independent Open-Source Projects',
+        role: 'Independent Principal Software Engineer',
+        period: 'October 2025 – Present',
+        summary:
+          'Building and releasing open-source infrastructure tooling and developer platforms, '
+          + 'leveraging AI-assisted development workflows to accelerate iteration and drive reusable CI/CD patterns.',
+        highlights: [
+          'Built and released terraform-template, an open-source framework for automated Terraform workflows using GitHub Actions, enabling zero-touch infrastructure deployments and reusable CI/CD patterns.',
+          'Architected and deployed Useful 2.0, a customizable resource hub built with React and TypeScript, designed for extensibility and rapid content iteration.',
+          'Integrated AI-assisted development workflows — GitHub Copilot, Claude Code, and LLM APIs — to accelerate iteration speed and reduce manual development effort across multiple open-source projects.',
+        ],
+        technologies: ['React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'Cloudflare Workers'],
+      },
+      {
         id: 'ensemble',
         company: 'Ensemble Health Partners',
         role: 'Principal Software Engineer, Platform & Product Engineering',
@@ -72,10 +87,11 @@ export const config: SiteConfig = {
           + 'Provided technical leadership and coordinated execution across a 30+ engineer organization delivering '
           + 'real-time event processing, platform modernization, and a full application platform redesign.',
         highlights: [
-          'Provided architectural leadership across a 30+ engineer organization delivering real-time event processing, reliability improvements, a shared component platform, and a full application redesign.',
+          'Led the architectural transition of a legacy monolith to a modern Revenue Cycle Management platform utilizing micro-UIs and microservices, accelerating deployment frequency from monthly releases to a reliable bi-weekly cadence, with core teams achieving multiple releases per week.',
+          'Engineered a robust event engine processing over 864,000 real-time healthcare events daily, successfully shifting data processing from legacy overnight batch runs to a continuous stream with under 15 minutes of latency.',
           'Led the design and technical direction of a voice-based AI platform integrated with enterprise telephony, enabling automated support interactions and reducing customer service demand by 30% across the organization.',
           'Guided architectural improvements that reduced platform response times from tens of seconds to sub-second levels, raising uptime from 70% to 95% and establishing a new reliability baseline.',
-          'Shaped and operationalized the enterprise GitHub Copilot adoption strategy, enabling AI-assisted development workflows safely and consistently across all engineering teams.',
+          'Drove the enterprise-wide adoption of GitHub Copilot across a 250-member technology organization spanning data, product, security, and AI engineering, establishing a 35% active daily utilization rate to safely modernize engineering workflows at scale.',
           'Introduced Terraform as the core IaC standard, eliminating manual production changes and building the reusable module library adopted by all product teams.',
           'Delivered a shared CI/CD pipeline library for Azure DevOps, standardizing deployment workflows and accelerating developer productivity at scale.',
           'Implemented OAuth 2.0 and enterprise-wide RBAC policies; integrated Snyk, Wiz, and Probely into the SDLC to proactively mitigate production vulnerabilities.',
@@ -283,7 +299,7 @@ export const config: SiteConfig = {
       icon: 'Bot',
       skills: [
         { name: 'GitHub Copilot', level: 5 },
-        { name: 'Claude', level: 3 },
+        { name: 'Claude / Claude Code', level: 4 },
         { name: 'RAG', level: 3 },
         { name: 'GPT', level: 3 },
         { name: 'Ollama', level: 3 },
