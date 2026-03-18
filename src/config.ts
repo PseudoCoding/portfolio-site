@@ -68,7 +68,7 @@ export const config: SiteConfig = {
         role: 'Independent Principal Software Engineer',
         period: 'October 2025 – Present',
         summary:
-          'Building and releasing open-source infrastructure tooling and developer platforms, '
+          'Building and releasing open-source projects and AI experiments while '
           + 'leveraging AI-assisted development workflows to accelerate iteration and drive reusable CI/CD patterns.',
         highlights: [
           'Built and released terraform-template, an open-source framework for automated Terraform workflows using GitHub Actions, enabling zero-touch infrastructure deployments and reusable CI/CD patterns.',
