@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Hobbies } from './Hobbies';
-import type { Hobby } from '../../types';
+import { Hobbies } from '@/components/sections/Hobbies';
+import type { Hobby } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const hobbies: Hobby[] = [
   { name: 'Hiking', icon: 'Mountain', description: 'Exploring trails on weekends.' },

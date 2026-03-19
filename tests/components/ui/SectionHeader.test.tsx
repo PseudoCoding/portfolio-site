@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { SectionHeader } from './SectionHeader';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 describe('SectionHeader', () => {
   it('SectionHeader_eyebrowProp_rendersWithCommentPrefix', () => {

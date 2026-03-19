@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Community } from './Community';
-import type { CommunityEntry } from '../../types';
+import { Community } from '@/components/sections/Community';
+import type { CommunityEntry } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const entries: CommunityEntry[] = [
   {

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { GitHubProjects } from './GitHubProjects';
-import type { GitHubProject } from '../../types';
+import { GitHubProjects } from '@/components/sections/GitHubProjects';
+import type { GitHubProject } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const liveProject: GitHubProject = {
   id: 'live-proj',

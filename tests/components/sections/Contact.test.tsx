@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Contact } from './Contact';
-import type { ContactConfig, SiteMeta } from '../../types';
+import { Contact } from '@/components/sections/Contact';
+import type { ContactConfig, SiteMeta } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const meta: SiteMeta = {
   title: 'Test Portfolio',
@@ -73,8 +73,8 @@ describe('Contact', () => {
     // Arrange & Act
     render(<Contact contact={contact} meta={meta} />);
 
-    // Assert
-    expect(screen.getByRole('link', { name: contact.email })).toHaveAttribute('href', `mailto:${contact.email}`);
+    // Assert — email link is labeled "Email" (not raw address) since /clarify restructure
+    expect(screen.getByRole('link', { name: /email/i })).toHaveAttribute('href', `mailto:${contact.email}`);
   });
 
   it('Contact_render_noEmailLink_whenEmailAbsent', () => {

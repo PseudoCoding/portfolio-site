@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Skills } from './Skills';
-import type { SkillCategory } from '../../types';
+import { Skills } from '@/components/sections/Skills';
+import type { SkillCategory } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const skills: SkillCategory[] = [
   {
@@ -58,12 +58,15 @@ describe('Skills', () => {
     });
   });
 
-  it('Skills_render_showsProficiencyLabels', () => {
+  it('Skills_render_skillsAreRendered', () => {
     // Arrange & Act
     render(<Skills skills={skills} />);
 
-    // Assert — level 5 = "Expert", level 4 = "Advanced"
-    expect(screen.getAllByText('Expert').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText('Advanced').length).toBeGreaterThanOrEqual(1);
+    // Assert — all skills are rendered (proficiency labels removed in /distill)
+    skills.forEach((category) => {
+      category.skills.forEach((skill) => {
+        expect(screen.getAllByText(skill.name).length).toBeGreaterThanOrEqual(1);
+      });
+    });
   });
 });

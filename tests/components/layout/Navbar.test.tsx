@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Navbar } from './Navbar';
-import type { SiteMeta } from '../../types';
+import { Navbar } from '@/components/layout/Navbar';
+import type { SiteMeta } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const meta: SiteMeta = {
   title: 'Test Portfolio',

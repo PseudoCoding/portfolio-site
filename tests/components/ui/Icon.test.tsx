@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { DynamicIcon } from './Icon';
+import { DynamicIcon } from '@/components/ui/Icon';
 
 describe('DynamicIcon', () => {
   it('DynamicIcon_knownIconName_rendersAnSvgElement', () => {

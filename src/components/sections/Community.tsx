@@ -45,7 +45,7 @@ export function Community({ entries }: CommunityProps) {
       <div className="section-wrapper py-28">
         <SectionHeader
           headline="Community & Leadership"
-          sub="Meetups, mentorship, and open-source — investing in the engineers around me."
+          sub="Meetups, mentorship, and open-source: investing in the engineers around me."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">

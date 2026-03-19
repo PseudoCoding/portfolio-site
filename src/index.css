@@ -156,7 +156,6 @@
   }
 }
 
-/* ── Progress bar (scroll indicator) ─────────────────────── */
 #scroll-progress {
   position: fixed;
   top: 0;

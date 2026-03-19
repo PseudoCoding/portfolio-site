@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useScrollProgress } from '@/hooks/useScrollProgress';
 
 describe('useScrollProgress', () => {
   beforeEach(() => {

@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { Projects } from './Projects';
-import type { Project } from '../../types';
+import { Projects } from '@/components/sections/Projects';
+import type { Project } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const featuredProject: Project = {
   id: 'proj-featured',

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { EducationAndCerts } from './EducationAndCerts';
-import type { EducationEntry, Certification } from '../../types';
+import { EducationAndCerts } from '@/components/sections/EducationAndCerts';
+import type { EducationEntry, Certification } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const education: EducationEntry[] = [
   {

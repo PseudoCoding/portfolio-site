@@ -30,6 +30,8 @@ const useScroll = vi.fn(() => ({
 const useSpring = vi.fn((value: unknown) => value);
 const useMotionValue = vi.fn((initial: unknown) => ({ get: vi.fn(() => initial), set: vi.fn() }));
 const useTransform = vi.fn(() => ({ get: vi.fn(() => 0) }));
+const useReducedMotion = vi.fn(() => false);
+const MotionConfig = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 const AnimatePresence = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 
-export { motion, useScroll, useSpring, useMotionValue, useTransform, AnimatePresence };
+export { motion, useScroll, useSpring, useMotionValue, useTransform, useReducedMotion, MotionConfig, AnimatePresence };

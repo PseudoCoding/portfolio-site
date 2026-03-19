@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Testimonials } from './Testimonials';
-import type { Testimonial } from '../../types';
+import { Testimonials } from '@/components/sections/Testimonials';
+import type { Testimonial } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const testimonials: Testimonial[] = [
   {

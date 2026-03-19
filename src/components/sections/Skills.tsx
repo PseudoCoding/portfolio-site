@@ -57,7 +57,7 @@ export function Skills({ skills }: SkillsProps) {
       <div className="section-wrapper">
         <SectionHeader
           headline="Skills & Expertise"
-          sub="Cloud infrastructure to frontend delivery — with depth at every layer of the stack."
+          sub="Cloud infrastructure to frontend delivery, with depth at every layer of the stack."
         />
 
         <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

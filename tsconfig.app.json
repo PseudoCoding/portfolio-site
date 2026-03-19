@@ -28,7 +28,6 @@
   "exclude": [
     "**/*.test.ts",
     "**/*.test.tsx",
-    "src/__mocks__",
-    "src/test"
+    "tests"
   ]
 }

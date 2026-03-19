@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
-import { ScrollProgress } from './ScrollProgress';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 describe('ScrollProgress', () => {
   it('ScrollProgress_renders_progressElementWithCorrectId', () => {

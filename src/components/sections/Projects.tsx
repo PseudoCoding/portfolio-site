@@ -150,7 +150,7 @@ export function Projects({ projects }: ProjectsProps) {
       <div className="section-wrapper">
         <SectionHeader
           headline="Projects & Platforms"
-          sub="Production systems built at healthcare scale — zero-trust security, event infrastructure, and developer platforms."
+          sub="Production systems built at healthcare scale: zero-trust security, event infrastructure, and developer platforms."
         />
 
         {/* Featured row */}

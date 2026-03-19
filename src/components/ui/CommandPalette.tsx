@@ -59,7 +59,7 @@ function CommandItem({
       <span className={`flex-1 font-mono text-sm transition-colors ${isSelected ? 'text-cyan-400' : 'text-slate-300'}`}>
         {cmd.label}
       </span>
-      <span className="max-w-[160px] truncate font-mono text-xs text-slate-600">
+      <span className="hidden max-w-[160px] truncate font-mono text-xs text-slate-600 sm:block">
         {cmd.description}
       </span>
     </li>
@@ -263,6 +263,10 @@ export function CommandPalette({ meta, contact }: CommandPaletteProps) {
             aria-hidden="true"
           />
 
+          {/* Centering wrapper — CSS handles position, motion.div handles animation */}
+          <div
+            className="fixed left-3 right-3 top-[12vh] z-[61] pointer-events-none sm:left-1/2 sm:right-auto sm:top-1/2 sm:w-[560px] sm:-translate-x-1/2 sm:-translate-y-1/2"
+          >
           {/* Palette panel */}
           <motion.div
             key="cp-panel"
@@ -273,7 +277,7 @@ export function CommandPalette({ meta, contact }: CommandPaletteProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ type: 'spring', stiffness: 500, damping: 35, mass: 0.5 }}
-            className="fixed left-1/2 top-[18%] z-[61] w-[min(560px,90vw)] -translate-x-1/2 overflow-hidden rounded-lg border bg-[#0d0d0d]"
+            className="pointer-events-auto w-full overflow-hidden rounded-lg border bg-[#0d0d0d]"
             style={{ borderColor: 'rgba(134, 227, 61, 0.25)' }}
           >
             {/* Prompt input */}
@@ -311,7 +315,7 @@ export function CommandPalette({ meta, contact }: CommandPaletteProps) {
                 ref={listRef}
                 role="listbox"
                 aria-label="Commands"
-                className="max-h-[320px] overflow-y-auto py-2"
+                className="max-h-[45vh] overflow-y-auto py-2 sm:max-h-[320px]"
               >
                 {filteredNavigate.length > 0 && (
                   <>
@@ -360,14 +364,15 @@ export function CommandPalette({ meta, contact }: CommandPaletteProps) {
 
             {/* Footer hints */}
             <div
-              className="flex items-center gap-4 border-t px-4 py-2"
+              className="flex items-center gap-3 border-t px-4 py-2"
               style={{ borderColor: 'rgba(134, 227, 61, 0.08)' }}
             >
-              <span className="font-mono text-[10px] text-slate-700">↑↓ navigate</span>
-              <span className="font-mono text-[10px] text-slate-700">⏎ execute</span>
-              <span className="ml-auto font-mono text-[10px] text-slate-700">// PseudoCoding</span>
+              <span className="hidden font-mono text-[10px] text-slate-700 sm:block">↑↓ navigate</span>
+              <span className="hidden font-mono text-[10px] text-slate-700 sm:block">⏎ execute</span>
+              <span className="font-mono text-[10px] text-slate-600 sm:ml-auto sm:text-slate-700">// PseudoCoding</span>
             </div>
           </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>,

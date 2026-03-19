@@ -1,4 +1,4 @@
-import { config } from './config';
+import { config } from '@/config';
 
 /** Icon names that are registered in Icon.tsx */
 const REGISTERED_ICONS = new Set([

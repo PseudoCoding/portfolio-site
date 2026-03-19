@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Experience } from './Experience';
-import type { ExperienceConfig } from '../../types';
+import { Experience } from '@/components/sections/Experience';
+import type { ExperienceConfig } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const config: ExperienceConfig = {
   tagline: 'A career building resilient systems.',

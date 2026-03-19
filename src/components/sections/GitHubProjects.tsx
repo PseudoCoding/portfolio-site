@@ -46,6 +46,7 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Live demo of ${project.title}`}
                   className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
                 >
                   <ArrowUpRight size={18} />

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Footer } from './Footer';
-import type { SiteMeta } from '../../types';
+import { Footer } from '@/components/layout/Footer';
+import type { SiteMeta } from '@/types';
 
 const meta: SiteMeta = {
   title: 'Test Portfolio',

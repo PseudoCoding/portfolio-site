@@ -39,7 +39,7 @@ export function Hobbies({ hobbies }: HobbiesProps) {
       <div className="section-wrapper py-28">
         <SectionHeader
           headline="Beyond the Code"
-          sub="The person behind the pull requests — hobbies that sharpen the same skills I use at work."
+          sub="The person behind the pull requests: hobbies that sharpen the same skills I use at work."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

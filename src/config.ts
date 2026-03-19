@@ -44,7 +44,7 @@ export const config: SiteConfig = {
       '13+ years building and leading engineering platforms that power healthcare at scale. '
         + 'I own the hard problems: architecting distributed systems, defining platform strategy, '
         + 'and establishing the engineering standards that let teams ship with confidence.',
-      'After leading an organization of 40+ engineers, I returned to the IC track by choice — '
+      'After leading an organization of 40+ engineers, I returned to the IC track by choice: '
         + 'to stay close to the work that matters most: multi-region infrastructure, zero-trust security, '
         + 'event-driven architecture, and the DevOps culture that makes scale sustainable. '
         + "I'm actively looking for a principal or staff role where I can own deep technical problems "
@@ -61,7 +61,7 @@ export const config: SiteConfig = {
     entries: [
       {
         id: 'independent',
-        company: 'Independent Open-Source Projects',
+        company: 'Freelance / Open Source',
         role: 'Independent Principal Software Engineer',
         period: 'October 2025 – Present',
         summary:
@@ -70,7 +70,7 @@ export const config: SiteConfig = {
         highlights: [
           'Built and released terraform-template, an open-source framework for automated Terraform workflows using GitHub Actions, enabling zero-touch infrastructure deployments and reusable CI/CD patterns.',
           'Architected and deployed Useful 2.0, a customizable resource hub built with React and TypeScript, designed for extensibility and rapid content iteration.',
-          'Integrated AI-assisted development workflows — GitHub Copilot, Claude Code, and LLM APIs — to accelerate iteration speed and reduce manual development effort across multiple open-source projects.',
+          'Integrated AI-assisted development workflows (GitHub Copilot, Claude Code, and LLM APIs) to accelerate iteration speed and reduce manual development effort across multiple open-source projects.',
         ],
         technologies: ['React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'Cloudflare Workers', 'Cloudflare Pages', 'OpenAI'],
       },
@@ -139,9 +139,9 @@ export const config: SiteConfig = {
       summary:
         'Joined straight out of college (B.S. Computer Science, Western New England University, 2012) through a '
         + '2-year rotational program across three distinct engineering domains. '
-        + 'Built production software in every rotation before becoming a key contributor to a Java platform — the trajectory that led directly to a principal engineering path.',
+        + 'Built production software in every rotation before becoming a key contributor to a Java platform, the trajectory that led directly to a principal engineering path.',
       highlights: [
-        'Completed three rotations across healthcare reporting (.NET), employee platform support, and large-scale Java products — shipping production software throughout.',
+        'Completed three rotations across healthcare reporting (.NET), employee platform support, and large-scale Java products, shipping production software throughout.',
         'Built an ICD-10 diagnostic code mapping tool and .NET companion applications for a mainframe support organization, reducing manual mapping overhead for clinical teams.',
         'Refactored legacy employee services platform to clean up code, increase reusability, and improved debugging capabilities',
         'Became a key contributor to a JDBC-based Java platform, taking ownership of deployments and API internals and establishing the track record that accelerated a principal engineering trajectory.',

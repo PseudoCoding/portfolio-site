@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <!-- Background rounded square -->
-  <rect width="32" height="32" rx="7" fill="#0a0f1e"/>
+  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
   <!-- Subtle border glow -->
-  <rect x="0.5" y="0.5" width="31" height="31" rx="6.5" fill="none" stroke="#00f5d4" stroke-opacity="0.35" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6.5" fill="none" stroke="#86e33d" stroke-opacity="0.35" stroke-width="1"/>
   <!-- Terminal chevron prompt ">" -->
-  <path d="M6 11.5 L12.5 16 L6 20.5" stroke="#00f5d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M6 11.5 L12.5 16 L6 20.5" stroke="#86e33d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <!-- Blinking cursor block -->
-  <rect x="15" y="19" width="9" height="2.5" rx="1.25" fill="#00f5d4"/>
+  <rect x="15" y="19" width="9" height="2.5" rx="1.25" fill="#86e33d"/>
   <!-- Subtle top-left corner accent dot -->
-  <circle cx="28" cy="4" r="1.5" fill="#00f5d4" fill-opacity="0.5"/>
+  <circle cx="28" cy="4" r="1.5" fill="#86e33d" fill-opacity="0.5"/>
 </svg>

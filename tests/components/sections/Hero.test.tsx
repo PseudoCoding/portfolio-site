@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Hero } from './Hero';
-import type { HeroConfig, SiteMeta } from '../../types';
+import { Hero } from '@/components/sections/Hero';
+import type { HeroConfig, SiteMeta } from '@/types';
 
-vi.mock('framer-motion', () => import('../../__mocks__/framer-motion'));
+vi.mock('framer-motion', () => import('@mocks/framer-motion'));
 
 const meta: SiteMeta = {
   title: 'Test Portfolio',
@@ -93,8 +93,10 @@ describe('Hero', () => {
     // Arrange & Act
     render(<Hero hero={hero} meta={meta} />);
 
-    // Assert
-    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute('href', meta.githubUrl);
+    // Assert — @PseudoCoding handle + social icon both link to GitHub, so use getAllByRole
+    const githubLinks = screen.getAllByRole('link', { name: /github/i });
+    expect(githubLinks.length).toBeGreaterThanOrEqual(1);
+    expect(githubLinks.some(l => l.getAttribute('href') === meta.githubUrl)).toBe(true);
     expect(screen.getByRole('link', { name: /linkedin/i })).toHaveAttribute('href', meta.linkedinUrl);
   });
 });
