@@ -10,9 +10,9 @@
  *
  * All content is driven by config.hero.
  */
-import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, FileDown, ChevronDown } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Github, Linkedin, FileDown } from 'lucide-react';
 import type { HeroConfig, SiteMeta } from '../../types';
 
 interface HeroProps {
@@ -24,20 +24,12 @@ interface HeroProps {
 function AmbientBlobs() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Top-left teal blob */}
+      {/* Single top-center phosphor green glow */}
       <div
-        className="absolute -top-32 -left-32 h-[600px] w-[600px] rounded-full opacity-20"
+        className="absolute -top-40 left-1/2 h-[500px] w-[min(700px,150vw)] -translate-x-1/2 rounded-full opacity-15"
         style={{
-          background: 'radial-gradient(circle, rgba(0,245,212,0.35) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-      />
-      {/* Bottom-right indigo blob */}
-      <div
-        className="absolute -bottom-48 -right-24 h-[500px] w-[500px] rounded-full opacity-15"
-        style={{
-          background: 'radial-gradient(circle, rgba(99,102,241,0.45) 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          background: 'radial-gradient(circle, rgba(134,227,61,0.4) 0%, transparent 70%)',
+          filter: 'blur(90px)',
         }}
       />
     </div>
@@ -48,6 +40,7 @@ function AmbientBlobs() {
 function Cursor() {
   return (
     <motion.span
+      aria-hidden="true"
       className="ml-0.5 inline-block h-7 w-0.5 bg-cyan-400 align-middle"
       animate={{ opacity: [1, 0] }}
       transition={{ duration: 0.7, repeat: Infinity, repeatType: 'reverse' }}
@@ -59,9 +52,9 @@ function Cursor() {
 function DotGrid() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 opacity-40"
+      className="pointer-events-none absolute inset-0 opacity-30"
       style={{
-        backgroundImage: `radial-gradient(circle, rgba(0,245,212,0.18) 1px, transparent 1px)`,
+        backgroundImage: `radial-gradient(circle, rgba(134,227,61,0.22) 1px, transparent 1px)`,
         backgroundSize: '28px 28px',
         maskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%)',
         WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%)',
@@ -70,20 +63,36 @@ function DotGrid() {
   );
 }
 
+/** Staggered entrance animation variants — defined at module level to avoid re-creation on render */
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
 export function Hero({ hero, meta }: HeroProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  // Ref to clean up the 2-second pause timer between type/delete cycles
+  const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /** Typing animation effect */
+  /** Typing animation effect — skipped when user prefers reduced motion */
   const animate = useCallback(() => {
+    if (!hero.taglines.length) return;
     const full = hero.taglines[taglineIndex];
     if (!isDeleting) {
       if (displayed.length < full.length) {
         setDisplayed(full.slice(0, displayed.length + 1));
       } else {
-        // Wait 2s before deleting
-        setTimeout(() => setIsDeleting(true), 2000);
+        // Pause 2s before deleting; store the timer so it can be cleaned up
+        pauseTimerRef.current = setTimeout(() => setIsDeleting(true), 2000);
         return;
       }
     } else {
@@ -97,25 +106,27 @@ export function Hero({ hero, meta }: HeroProps) {
   }, [displayed, isDeleting, taglineIndex, hero.taglines]);
 
   useEffect(() => {
+    // Clean up pause timer on unmount
+    return () => {
+      if (pauseTimerRef.current !== null) clearTimeout(pauseTimerRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Skip the typing animation entirely for users who prefer reduced motion
+    if (prefersReducedMotion) return;
     const speed = isDeleting ? 35 : 60;
     const timer = setTimeout(animate, speed);
     return () => clearTimeout(timer);
-  }, [animate, isDeleting]);
+  }, [animate, isDeleting, prefersReducedMotion]);
 
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.12 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-  };
+  // For reduced motion: show the first tagline statically without typing
+  const visibleTagline = prefersReducedMotion ? (hero.taglines[0] ?? '') : displayed;
 
   return (
     <section
       id="hero"
-      className="scanline-overlay relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
     >
       <AmbientBlobs />
       <DotGrid />
@@ -135,24 +146,29 @@ export function Hero({ hero, meta }: HeroProps) {
         {/* Name */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl font-bold tracking-tight text-slate-100 sm:text-6xl lg:text-7xl"
+          className="text-5xl font-bold tracking-tight text-slate-100 sm:text-6xl lg:text-8xl"
         >
           {hero.name}
         </motion.h1>
 
         {/* Handle */}
-        <motion.p variants={itemVariants} className="mt-2 font-mono text-sm text-slate-500">
+        <motion.p variants={itemVariants} className="mt-4 font-mono text-sm text-slate-500">
           {hero.handle}
         </motion.p>
 
         {/* Typing tagline */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 flex h-12 items-center justify-center"
+          className="mt-8 flex min-h-12 items-center justify-center"
         >
-          <span className="text-xl font-semibold text-cyan-400 sm:text-2xl md:text-3xl">
-            {displayed}
-            <Cursor />
+          {/* Visual typing animation — hidden from assistive technology */}
+          <span aria-hidden="true" className="text-xl font-semibold text-cyan-400 sm:text-2xl md:text-3xl">
+            {visibleTagline}
+            {!prefersReducedMotion && <Cursor />}
+          </span>
+          {/* Screen reader gets the complete current tagline, announced once on change */}
+          <span className="sr-only" aria-live="polite" aria-atomic="true">
+            {hero.taglines[taglineIndex]}
           </span>
         </motion.div>
 
@@ -196,7 +212,7 @@ export function Hero({ hero, meta }: HeroProps) {
             href={meta.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors"
+            className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
           >
             <Github size={16} />
             GitHub
@@ -206,7 +222,7 @@ export function Hero({ hero, meta }: HeroProps) {
             href={meta.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors"
+            className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
           >
             <Linkedin size={16} />
             LinkedIn
@@ -214,22 +230,6 @@ export function Hero({ hero, meta }: HeroProps) {
         </motion.div>
       </motion.div>
 
-      {/* ── Scroll cue ── */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 0.8 }}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-1 text-slate-600"
-        >
-          <span className="mono-label text-xs">scroll</span>
-          <ChevronDown size={18} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

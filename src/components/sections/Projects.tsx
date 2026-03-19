@@ -75,20 +75,20 @@ function ProjectCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay: index * 0.1 }}
     >
       <TiltCard className="h-full">
         <div
-          className={`glass-card h-full p-6 flex flex-col transition-all duration-300 hover:border-cyan-400/40 ${
-            featured ? 'hover:shadow-glow' : ''
+          className={`glass-card h-full p-6 flex flex-col transition-colors duration-300 hover:border-cyan-400/40 ${
+            featured ? 'border-l-2 border-l-cyan-400/50' : ''
           }`}
         >
           {/* Title row */}
           <div className="flex items-start justify-between gap-3 mb-3">
-            <div>
+            <div className="min-w-0">
               {featured && (
                 <span className="mono-label mb-1.5 block">
                   <Zap size={10} className="inline mr-1 text-cyan-400" />
@@ -98,11 +98,12 @@ function ProjectCard({
               <h3 className="text-lg font-bold text-slate-100 leading-snug">{project.title}</h3>
             </div>
             {project.liveUrl || project.githubUrl ? (
-              <a
+        <a
                 href={project.liveUrl ?? project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-cyan-400 transition-colors shrink-0 mt-0.5"
+                aria-label={`View ${project.title}`}
+                className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm shrink-0 mt-0.5"
               >
                 <ArrowUpRight size={18} />
               </a>
@@ -122,13 +123,12 @@ function ProjectCard({
             ))}
           </ul>
 
-          {/* Impact callout */}
-          <div className="mb-4 rounded-xl border border-cyan-400/15 bg-cyan-400/5 px-4 py-2.5">
-            <p className="text-xs font-medium text-cyan-300/90">
-              <span className="mono-label mr-1 not-italic">impact →</span>
-              {project.impact}
+          {/* Impact */}
+          {project.impact && (
+            <p className="mb-4 text-xs text-cyan-400/70">
+              <span className="font-mono">impact →</span> {project.impact}
             </p>
-          </div>
+          )}
 
           {/* Tech badges */}
           <div className="flex flex-wrap gap-1.5">
@@ -148,18 +148,16 @@ export function Projects({ projects }: ProjectsProps) {
 
   return (
     <section id="projects" className="relative">
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="work"
           headline="Projects & Platforms"
-          sub="Systems built for real scale, from zero-trust security tooling to company-wide event infrastructure."
+          sub="Production systems built at healthcare scale — zero-trust security, event infrastructure, and developer platforms."
         />
 
         {/* Featured row */}
         {featured.length > 0 && (
-          <div className="mb-8 grid gap-6 md:grid-cols-2">
+          <div className="mb-8 grid gap-6 sm:grid-cols-2">
             {featured.map((p, i) => (
               <ProjectCard key={p.id} project={p} index={i} featured />
             ))}

@@ -19,13 +19,12 @@ export function Contact({ contact, meta }: ContactProps) {
   return (
     <section id="contact" className="relative pb-32">
       {/* Section divider */}
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
       {/* Bottom glow */}
       <div
         className="pointer-events-none absolute bottom-0 left-1/2 h-80 w-[600px] -translate-x-1/2"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,245,212,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(134,227,61,0.05) 0%, transparent 70%)',
         }}
       />
 
@@ -44,7 +43,7 @@ export function Contact({ contact, meta }: ContactProps) {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl"
         >
-          <div className="glass-card p-8 text-center">
+          <div className="glass-card p-6 text-center">
             <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
               {/* GitHub */}
               <a
@@ -82,7 +81,7 @@ export function Contact({ contact, meta }: ContactProps) {
             {/* Resume CTA */}
             <div className="border-t border-slate-800 pt-8">
               <p className="mb-4 text-sm text-slate-400">
-                Prefer to read a traditional résumé?
+                Need the formal version?
               </p>
               <a
                 href={meta.resumeUrl}
@@ -113,14 +112,21 @@ export function Contact({ contact, meta }: ContactProps) {
                 <span className="text-sm font-medium text-slate-300">Schedule a Call</span>
               </div>
               <iframe
-                src={`${contact.calendlyUrl}?hide_event_type_details=1&hide_gdpr_banner=1`}
+                src={`${contact.calendlyUrl}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=0a0a0a&text_color=cbd5e1&primary_color=86e33d`}
                 title="Schedule a call via Calendly"
                 width="100%"
-                height="660"
-                className="rounded-lg border-0"
-                style={{ filter: 'invert(1) hue-rotate(180deg)' }}
+                className="h-[420px] rounded-lg border-0 md:h-[660px]"
                 loading="lazy"
+                allowFullScreen
               />
+              {contact.email && (
+                <p className="mt-3 text-center text-xs text-slate-500">
+                  Trouble loading?{' '}
+                  <a href={`mailto:${contact.email}`} className="text-cyan-400 hover:underline transition-colors">
+                    Email me directly
+                  </a>
+                </p>
+              )}
             </div>
           </motion.div>
         )}

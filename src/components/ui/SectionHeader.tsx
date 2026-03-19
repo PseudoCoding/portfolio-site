@@ -7,7 +7,7 @@
 import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
-  eyebrow: string;
+  eyebrow?: string;
   headline: string;
   sub?: string;
   align?: 'left' | 'center';
@@ -29,7 +29,9 @@ export function SectionHeader({
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6 }}
     >
-      <span className="mono-label mb-3 block">// {eyebrow}</span>
+      {eyebrow && (
+        <span className="mono-label mb-3 block">// {eyebrow}</span>
+      )}
       <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl lg:text-5xl">
         {headline}
       </h2>

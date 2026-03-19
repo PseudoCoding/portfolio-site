@@ -36,25 +36,22 @@ export const config: SiteConfig = {
       'Principal Software Engineer',
       'Platform & Infrastructure Architect',
       'DevOps Advocate',
-      'Engineering Leader',
       'Open-Source Contributor',
+      'Engineering Leader',
       'Community Builder',
-      'Enabler of Technical Excellence',
-      'Mentor',
-      'Lifelong Learner',
     ],
     bio: [
       '13+ years building and leading engineering platforms that power healthcare at scale. '
-        + 'I thrive at the intersection of deep technical ownership and organizational impact: '
-        + 'architecting distributed systems, defining platform strategy, and raising the engineering bar '
-        + 'for the teams around me.',
-      'After leading an organization of 40+ engineers, I returned to the IC track by choice to stay '
-        + 'close to the hardest problems: multi-region infrastructure, zero-trust security posture, '
-        + 'event-driven architecture, and the DevOps culture that turns good teams into great ones. '
-        + "I'm actively looking for a principal or staff engineering role where I can do both.",
+        + 'I own the hard problems: architecting distributed systems, defining platform strategy, '
+        + 'and establishing the engineering standards that let teams ship with confidence.',
+      'After leading an organization of 40+ engineers, I returned to the IC track by choice — '
+        + 'to stay close to the work that matters most: multi-region infrastructure, zero-trust security, '
+        + 'event-driven architecture, and the DevOps culture that makes scale sustainable. '
+        + "I'm actively looking for a principal or staff role where I can own deep technical problems "
+        + 'and help engineering organizations grow.',
     ],
-    cta: { label: 'See My Work', href: '#projects' },
-    ctaSecondary: { label: 'Download Résumé', href: '/devinhoude-resume.pdf' },
+    cta: { label: 'View Projects', href: '#projects' },
+    ctaSecondary: { label: 'Résumé (PDF)', href: '/devinhoude-resume.pdf' },
   },
 
   // ─── Experience ───────────────────────────────────────────────────────────
@@ -146,7 +143,7 @@ export const config: SiteConfig = {
       highlights: [
         'Completed three rotations across healthcare reporting (.NET), employee platform support, and large-scale Java products — shipping production software throughout.',
         'Built an ICD-10 diagnostic code mapping tool and .NET companion applications for a mainframe support organization, reducing manual mapping overhead for clinical teams.',
-        'Refactored legacy employeer services platform to clean up code, increase reusability, and improved debugging capabilities',
+        'Refactored legacy employee services platform to clean up code, increase reusability, and improved debugging capabilities',
         'Became a key contributor to a JDBC-based Java platform, taking ownership of deployments and API internals and establishing the track record that accelerated a principal engineering trajectory.',
       ],
       technologies: ['.NET', 'C#', 'Java', 'SQL', 'JDBC', 'Maven', 'Jenkins'],
@@ -405,20 +402,6 @@ export const config: SiteConfig = {
         'Established Terraform and TypeScript as validated patterns, accelerating future projects and the company-wide IaC library.',
       technologies: ['Azure', 'Terraform', 'TypeScript', 'React', 'Node.js', 'Azure Functions'],
     },
-    // {
-    //   id: 'oss-office',
-    //   title: 'Open-Source Program Office',
-    //   description:
-    //     'Stood up engineering practices for responsible open-source contribution at a Fortune 50 company, balancing IP protection with genuine community participation.',
-    //   highlights: [
-    //     'Defined repository quality standards (READMEs, licensing, DCO sign-off, security policies).',
-    //     'Partnered with legal on an IP-safe contribution policy used across all of technology.',
-    //     'Created a developer-first contribution guide that made compliance feel like good engineering, not legal overhead.',
-    //   ],
-    //   impact:
-    //     'Enabled engineers to participate in open source confidently, reducing shadow contributions and legal exposure.',
-    //   technologies: ['GitHub Enterprise', 'Open Source Policy', 'CODEOWNERS', 'GitHub Apps'],
-    // },
   ],
 
   // ─── GitHub / Open-Source Projects ────────────────────────────────────────
@@ -623,9 +606,8 @@ export const config: SiteConfig = {
   contact: {
     heading: "Let's Work Together",
     subheading:
-      "I'm actively looking for a principal or staff engineering role. If you're building something technically ambitious "
-      + "and want someone who can own deep IC work without losing sight of the bigger picture, let's talk. "
-      + 'Find me on LinkedIn or GitHub.',
+      "I'm actively looking for a principal or staff engineering role in platform, infrastructure, or developer tooling. "
+      + "If you're building something technically demanding and want an engineer who can own the architecture end-to-end, let's talk.",
     email: 'devin@pseudocoding.xyz',
     calendlyUrl: 'https://calendly.com/pseudocoding/intro',
   },

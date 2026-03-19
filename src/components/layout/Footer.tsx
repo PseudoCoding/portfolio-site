@@ -14,7 +14,7 @@ export function Footer({ meta }: FooterProps) {
   return (
     <footer className="border-t border-slate-800/60 py-8">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 lg:px-12">
-        <p className="font-mono text-xs text-slate-600">
+        <p className="font-mono text-xs text-slate-500">
           © {new Date().getFullYear()} PseudoCoding | Built with React + Vite
         </p>
 
@@ -23,7 +23,7 @@ export function Footer({ meta }: FooterProps) {
             href={meta.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-cyan-400 transition-colors"
+            className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
             aria-label="GitHub"
           >
             <Github size={16} />
@@ -32,14 +32,14 @@ export function Footer({ meta }: FooterProps) {
             href={meta.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 hover:text-cyan-400 transition-colors"
+            className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
             aria-label="LinkedIn"
           >
             <Linkedin size={16} />
           </a>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors"
+            className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
             aria-label="Back to top"
           >
             <ArrowUp size={13} />

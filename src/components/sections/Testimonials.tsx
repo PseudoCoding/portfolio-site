@@ -34,7 +34,7 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay: index * 0.13 }}
-      className="glass-card p-6 flex flex-col gap-4 hover:border-cyan-400/30 transition-all duration-300"
+      className="glass-card p-6 flex flex-col gap-4 hover:border-cyan-400/40 transition-colors duration-300"
     >
       {/* Quote icon */}
       <Quote size={22} className="text-cyan-400/40" />
@@ -44,16 +44,12 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
 
       {/* Author */}
       <div className="flex items-center gap-3 border-t border-slate-800 pt-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400/30 to-indigo-500/20 font-mono text-xs font-bold text-cyan-300">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-400/12 font-mono text-xs font-bold text-cyan-400 ring-1 ring-cyan-400/25">
           {initials}
         </div>
-        <div>
-          <p className="text-sm font-semibold text-slate-100">{t.author}</p>
-          <p className="text-xs text-slate-500">
-            {t.role}
-            <span className="dot-sep" />
-            {t.company}
-          </p>
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-slate-100 truncate">{t.author}</p>
+          <p className="text-xs text-slate-500 truncate">{t.role} · {t.company}</p>
         </div>
       </div>
     </motion.div>
@@ -63,13 +59,11 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
 export function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <section id="testimonials" className="relative">
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
-      <div className="section-wrapper">
+      <div className="section-wrapper py-28">
         <SectionHeader
-          eyebrow="words from others"
           headline="Recommendations"
-          sub="What colleagues and collaborators say. Update these in src/config.ts with real quotes from LinkedIn or peers."
+          sub="From engineering leaders and peers who've worked alongside me."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -19,14 +19,14 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay: index * 0.08 }}
       className="h-full"
     >
       <div
-        className={`glass-card h-full p-6 flex flex-col transition-all duration-300 ${
+        className={`glass-card h-full p-6 flex flex-col transition-colors duration-300 ${
           project.comingSoon
             ? 'opacity-50 border-dashed'
             : 'hover:border-cyan-400/40'
@@ -34,9 +34,9 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
       >
         {/* Title row */}
         <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             <Github size={16} className="text-slate-500 shrink-0" />
-            <h3 className="text-lg font-bold text-slate-100 leading-snug">{project.title}</h3>
+            <h3 className="text-lg font-bold text-slate-100 leading-snug truncate">{project.title}</h3>
           </div>
 
           {!project.comingSoon && (
@@ -46,8 +46,7 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyan-400 transition-colors"
-                  aria-label={`Live demo of ${project.title}`}
+                  className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
                 >
                   <ArrowUpRight size={18} />
                 </a>
@@ -56,7 +55,7 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
                 href={repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-cyan-400 transition-colors"
+                className="text-slate-500 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
                 aria-label={`GitHub repo for ${project.title}`}
               >
                 <Github size={16} />
@@ -78,7 +77,7 @@ function ProjectCard({ project, index }: { project: GitHubProject; index: number
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs text-slate-500 hover:text-cyan-400/80 transition-colors mb-3 block truncate"
+            className="font-mono text-xs text-slate-500 hover:text-cyan-400/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm mb-3 block truncate"
           >
             {project.repo}
           </a>
@@ -120,13 +119,11 @@ export function GitHubProjects({ projects }: GitHubProjectsProps) {
 
   return (
     <section id="github" className="relative">
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="open source"
           headline="GitHub Projects"
-          sub="Personal and open-source work you can browse, clone, and contribute to."
+          sub="Open-source tools, templates, and experiments. Browse the code, fork what's useful."
         />
 
         {/* Live repos */}

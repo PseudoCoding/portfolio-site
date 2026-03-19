@@ -8,30 +8,30 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        // Brand palette ─ tweak these in config.ts to retheme globally
+        // Phosphor green accent — the ONE color that owns the entire site
         cyan: {
-          DEFAULT: '#00f5d4',
-          50: '#f0fffd',
-          100: '#ccfff6',
-          200: '#99ffed',
-          300: '#5cffe3',
-          400: '#00f5d4',
-          500: '#00cbb0',
-          600: '#00a38e',
-          700: '#008072',
-          800: '#00645a',
-          900: '#00514a',
+          DEFAULT: '#86e33d',
+          50:  '#f2ffe4',
+          100: '#dfffa8',
+          200: '#c3f570',
+          300: '#a5eb4c',
+          400: '#86e33d',   // ← primary accent
+          500: '#67c227',
+          600: '#4f9a19',
+          700: '#3b7512',
+          800: '#2a540c',
+          900: '#1c3c08',
         },
         slate: {
-          925: '#0a0f1e',
-          950: '#060c18',
+          925: '#111111',
+          950: '#0a0a0a',  // true near-black — no blue tint
         },
       },
       backgroundImage: {
         'grid-pattern':
-          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 40L40 0M-10 10L10-10M30 50L50 30' stroke='%2300f5d4' stroke-width='0.3' stroke-opacity='0.08'/%3E%3C/svg%3E\")",
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 40L40 0M-10 10L10-10M30 50L50 30' stroke='%2386e33d' stroke-width='0.3' stroke-opacity='0.1'/%3E%3C/svg%3E\")",
         'dot-pattern':
-          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='1' cy='1' r='1' fill='%2300f5d4' fill-opacity='0.12'/%3E%3C/svg%3E\")",
+          "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='1' cy='1' r='1' fill='%2386e33d' fill-opacity='0.14'/%3E%3C/svg%3E\")",
       },
       animation: {
         'fade-up': 'fadeUp 0.6s ease-out forwards',
@@ -51,14 +51,14 @@ export default {
           '100%': { opacity: '1' },
         },
         glowPulse: {
-          '0%, 100%': { boxShadow: '0 0 20px 0px rgba(0,245,212,0.3)' },
-          '50%': { boxShadow: '0 0 40px 8px rgba(0,245,212,0.5)' },
+          '0%, 100%': { boxShadow: '0 0 20px 0px rgba(134,227,61,0.2)' },
+          '50%': { boxShadow: '0 0 40px 8px rgba(134,227,61,0.4)' },
         },
       },
       boxShadow: {
-        glow: '0 0 20px rgba(0,245,212,0.35)',
-        'glow-sm': '0 0 10px rgba(0,245,212,0.2)',
-        'glow-lg': '0 0 40px rgba(0,245,212,0.45)',
+        glow:      '0 0 20px rgba(134,227,61,0.25)',
+        'glow-sm': '0 0 10px rgba(134,227,61,0.15)',
+        'glow-lg': '0 0 40px rgba(134,227,61,0.35)',
       },
     },
   },

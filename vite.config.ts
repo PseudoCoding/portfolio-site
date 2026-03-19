@@ -21,7 +21,6 @@ export default defineConfig({
           'vendor-react': ['react', 'react-dom'],
           'vendor-motion': ['framer-motion'],
           'vendor-icons': ['lucide-react'],
-          'vendor-utils': ['react-intersection-observer'],
         },
       },
     },

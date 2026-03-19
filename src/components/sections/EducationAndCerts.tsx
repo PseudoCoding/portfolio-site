@@ -6,7 +6,7 @@
  * Additional degrees can be added to config.education at any time.
  */
 import { motion } from 'framer-motion';
-import { GraduationCap, BadgeCheck } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { SectionHeader } from '../ui/SectionHeader';
 import { DynamicIcon } from '../ui/Icon';
 import type { EducationEntry, Certification } from '../../types';
@@ -19,14 +19,14 @@ interface EducationAndCertsProps {
 function EducationCard({ entry, index }: { entry: EducationEntry; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="glass-card p-6"
     >
       <div className="mb-4 flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-cyan-400/10">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-400/10">
           <GraduationCap size={20} className="text-cyan-400" />
         </div>
         <div>
@@ -46,14 +46,14 @@ function EducationCard({ entry, index }: { entry: EducationEntry; index: number 
 function CertCard({ cert, index }: { cert: Certification; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="glass-card-hover p-5 flex items-start gap-4"
+      className="glass-card-hover p-6 flex items-start gap-4"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400/20 to-indigo-500/10">
-        <DynamicIcon name={cert.icon ?? 'Award'} size={18} className="text-cyan-400" />
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-400/10">
+        <DynamicIcon name={cert.icon ?? 'Award'} size={20} className="text-cyan-400" />
       </div>
       <div className="flex-1 min-w-0">
         <p className="font-semibold text-slate-100 leading-snug">{cert.name}</p>
@@ -63,10 +63,7 @@ function CertCard({ cert, index }: { cert: Certification; index: number }) {
         )}
       </div>
       {cert.year && (
-        <div className="shrink-0 flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/8 px-2.5 py-1 font-mono text-xs text-cyan-400">
-          <BadgeCheck size={11} />
-          {cert.year}
-        </div>
+        <span className="shrink-0 font-mono text-xs text-cyan-400/70">{cert.year}</span>
       )}
     </motion.div>
   );
@@ -75,11 +72,9 @@ function CertCard({ cert, index }: { cert: Certification; index: number }) {
 export function EducationAndCerts({ education, certifications }: EducationAndCertsProps) {
   return (
     <section id="education" className="relative">
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="background"
           headline="Education & Certifications"
           align="left"
         />

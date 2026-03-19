@@ -5,26 +5,31 @@
 /* ── Base ─────────────────────────────────────────────────── */
 @layer base {
   :root {
-    --accent: #00f5d4;
-    --accent-dim: rgba(0, 245, 212, 0.15);
-    --accent-border: rgba(0, 245, 212, 0.2);
-    --bg-card: rgba(10, 15, 30, 0.8);
+    --accent: #86e33d;
+    --accent-dim: rgba(134, 227, 61, 0.10);
+    --accent-border: rgba(134, 227, 61, 0.18);
+    --bg-card: #111111;
+    /* Easing tokens — prefer these over CSS built-ins */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     @apply bg-slate-950 text-slate-100 font-sans;
+    /* Single subtle green glow at top — no indigo, no colorful blobs */
     background-image:
-      radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0, 245, 212, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 30% at 80% 60%, rgba(99, 102, 241, 0.04) 0%, transparent 50%);
+      radial-gradient(ellipse 60% 25% at 50% -5%, rgba(134, 227, 61, 0.05) 0%, transparent 60%);
   }
 
   ::selection {
-    background-color: rgba(0, 245, 212, 0.25);
-    color: #fff;
+    background-color: rgba(134, 227, 61, 0.22);
+    color: #0a0a0a;
   }
 
   /* Scrollbar */
@@ -35,36 +40,33 @@
     @apply bg-slate-950;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(0, 245, 212, 0.3);
+    background: rgba(134, 227, 61, 0.25);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 245, 212, 0.5);
+    background: rgba(134, 227, 61, 0.45);
   }
 }
 
 /* ── Components ───────────────────────────────────────────── */
 @layer components {
-  /* Glassmorphism card */
+  /* Card surface — flat and opaque (no glassmorphism) */
   .glass-card {
-    @apply rounded-2xl border backdrop-blur-md;
+    @apply rounded-lg border;
     background: var(--bg-card);
     border-color: var(--accent-border);
   }
 
   .glass-card-hover {
-    @apply glass-card transition-all duration-300;
+    @apply glass-card;
+    transition: border-color 300ms var(--ease-out-quart),
+                box-shadow    300ms var(--ease-out-quart),
+                transform     300ms var(--ease-out-quart);
   }
   .glass-card-hover:hover {
-    border-color: rgba(0, 245, 212, 0.45);
-    box-shadow: 0 0 30px rgba(0, 245, 212, 0.12), 0 20px 60px rgba(0, 0, 0, 0.4);
-    transform: translateY(-3px);
-  }
-
-  /* Accent gradient text */
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #00f5d4 0%, #6366f1 100%);
+    border-color: rgba(134, 227, 61, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
   }
 
   /* Inline code / monospace labels */
@@ -74,46 +76,60 @@
 
   /* Section wrapper */
   .section-wrapper {
-    @apply relative mx-auto max-w-7xl px-6 py-24 lg:px-12;
+    @apply relative mx-auto max-w-7xl px-6 py-20 lg:px-12;
   }
 
   /* Tech badge */
   .tech-badge {
     @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-mono font-medium;
-    background: rgba(0, 245, 212, 0.08);
-    border: 1px solid rgba(0, 245, 212, 0.2);
-    color: rgba(0, 245, 212, 0.9);
+    background: rgba(134, 227, 61, 0.08);
+    border: 1px solid rgba(134, 227, 61, 0.18);
+    color: rgba(134, 227, 61, 0.9);
   }
 
-  /* Button primary */
+  /* Button primary — remove box-shadow from transition list since we no longer use it */
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold
-           text-slate-950 transition-all duration-200;
-    background: #00f5d4;
+    @apply inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold
+           text-slate-950;
+    background: #86e33d;
+    transition: background 150ms var(--ease-out-quart),
+                transform   100ms var(--ease-out-quart);
   }
   .btn-primary:hover {
-    background: #33f9de;
-    box-shadow: 0 0 24px rgba(0, 245, 212, 0.5);
+    background: #9bec5a;
     transform: translateY(-1px);
   }
+  .btn-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #0a0a0a, 0 0 0 4px rgba(134, 227, 61, 0.7);
+  }
+  .btn-primary:active {
+    transform: scale(0.97);
+    box-shadow: none;
+  }
 
-  /* Button outline */
+  /* Button outline — remove box-shadow from transition since we no longer use it on hover */
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold
-           text-cyan-400 transition-all duration-200;
-    border-color: rgba(0, 245, 212, 0.4);
+    @apply inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold
+           text-cyan-400;
+    border-color: rgba(134, 227, 61, 0.35);
+    transition: border-color 150ms var(--ease-out-quart),
+                background   150ms var(--ease-out-quart),
+                transform    100ms var(--ease-out-quart);
   }
   .btn-outline:hover {
-    border-color: rgba(0, 245, 212, 0.8);
-    background: rgba(0, 245, 212, 0.06);
-    box-shadow: 0 0 18px rgba(0, 245, 212, 0.2);
+    border-color: rgba(134, 227, 61, 0.75);
+    background: rgba(134, 227, 61, 0.06);
+  }
+  .btn-outline:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #0a0a0a, 0 0 0 4px rgba(134, 227, 61, 0.6);
+  }
+  .btn-outline:active {
+    transform: scale(0.97);
+    box-shadow: none;
   }
 
-  /* Dot separator */
-  .dot-sep::before {
-    content: '·';
-    @apply mx-2 text-slate-500;
-  }
 }
 
 /* ── Utilities ────────────────────────────────────────────── */
@@ -121,18 +137,6 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  /* Stagger children fade-up */
-  .stagger > * {
-    @apply opacity-0;
-    animation: fadeUp 0.6s ease-out forwards;
-  }
-  .stagger > *:nth-child(1) { animation-delay: 0.05s; }
-  .stagger > *:nth-child(2) { animation-delay: 0.15s; }
-  .stagger > *:nth-child(3) { animation-delay: 0.25s; }
-  .stagger > *:nth-child(4) { animation-delay: 0.35s; }
-  .stagger > *:nth-child(5) { animation-delay: 0.45s; }
-  .stagger > *:nth-child(6) { animation-delay: 0.55s; }
 }
 
 /* ── Keyframes ────────────────────────────────────────────── */
@@ -141,30 +145,15 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 245, 212, 0.25); }
-  50%       { box-shadow: 0 0 40px rgba(0, 245, 212, 0.55); }
-}
-
-@keyframes scanline {
-  0%   { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-/* ── Scanline overlay (hero only) ────────────────────────── */
-.scanline-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 245, 212, 0.015) 2px,
-    rgba(0, 245, 212, 0.015) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ── Progress bar (scroll indicator) ─────────────────────── */
@@ -173,7 +162,7 @@
   top: 0;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #00f5d4, #6366f1);
+  background: #86e33d;
   z-index: 9999;
   transform-origin: left;
 }

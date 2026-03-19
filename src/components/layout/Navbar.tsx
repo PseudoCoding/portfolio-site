@@ -80,7 +80,7 @@ export function Navbar({ meta }: NavbarProps) {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="font-mono text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors"
+            className="font-mono text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
           >
             <span className="text-slate-500">{'// '}</span>
             PseudoCoding
@@ -94,7 +94,7 @@ export function Navbar({ meta }: NavbarProps) {
                 <button
                   key={href}
                   onClick={() => handleNav(href)}
-                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] ${
                     isActive
                       ? 'text-cyan-400'
                       : 'text-slate-400 hover:text-slate-100'
@@ -118,7 +118,7 @@ export function Navbar({ meta }: NavbarProps) {
               href={meta.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition-colors"
+              className="text-slate-400 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
               aria-label="GitHub"
             >
               <Github size={18} />
@@ -127,7 +127,7 @@ export function Navbar({ meta }: NavbarProps) {
               href={meta.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition-colors"
+              className="text-slate-400 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
               aria-label="LinkedIn"
             >
               <Linkedin size={18} />
@@ -145,7 +145,7 @@ export function Navbar({ meta }: NavbarProps) {
 
           {/* Mobile hamburger */}
           <button
-            className="text-slate-400 hover:text-white transition-colors xl:hidden"
+            className="text-slate-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-md xl:hidden"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
@@ -157,37 +157,51 @@ export function Navbar({ meta }: NavbarProps) {
       {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-y-0 right-0 z-40 w-64 backdrop-blur-xl border-l bg-slate-950/95 border-cyan-400/10 pt-20 px-6 xl:hidden"
-          >
-            <nav className="flex flex-col gap-1">
-              {NAV_LINKS.map(({ label, href }) => (
-                <button
-                  key={href}
-                  onClick={() => handleNav(href)}
-                  className="rounded-lg px-4 py-3 text-left text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors"
-                >
-                  {label}
-                </button>
-              ))}
-              <div className="mt-6 flex gap-4 px-4">
-                <a href={meta.githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  <Github size={18} />
+          <>
+            {/* Backdrop — click to close */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-30 bg-black/60 xl:hidden"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              key="drawer"
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-y-0 right-0 z-40 w-[min(256px,85vw)] border-l bg-slate-950 border-cyan-400/10 pt-20 px-4 sm:px-6 xl:hidden"
+            >
+              <nav className="flex flex-col gap-1">
+                {NAV_LINKS.map(({ label, href }) => (
+                  <button
+                    key={href}
+                    onClick={() => handleNav(href)}
+                    className="rounded-lg px-4 py-3 text-left text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a]"
+                  >
+                    {label}
+                  </button>
+                ))}
+                <div className="mt-6 flex gap-4 px-4">
+                  <a href={meta.githubUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-slate-400 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm">
+                    <Github size={18} />
+                  </a>
+                  <a href={meta.linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm">
+                    <Linkedin size={18} />
+                  </a>
+                </div>
+                <a href={meta.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn-outline mt-4 justify-center">
+                  <FileDown size={14} />
+                  Résumé
                 </a>
-                <a href={meta.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  <Linkedin size={18} />
-                </a>
-              </div>
-              <a href={meta.resumeUrl} target="_blank" rel="noopener noreferrer" className="btn-outline mt-4 justify-center">
-                <FileDown size={14} />
-                Résumé
-              </a>
-            </nav>
-          </motion.div>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

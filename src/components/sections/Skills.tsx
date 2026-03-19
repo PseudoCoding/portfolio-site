@@ -5,7 +5,8 @@
  * Each category is a card containing animated skill bars.
  * The icon field maps to a Lucide icon by name (pascal-cased).
  */
-import { motion } from 'framer-motion';
+import { useMemo } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { SectionHeader } from '../ui/SectionHeader';
 import { DynamicIcon } from '../ui/Icon';
 import type { SkillCategory } from '../../types';
@@ -15,6 +16,7 @@ interface SkillsProps {
 }
 
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
+  const prefersReducedMotion = useReducedMotion();
   const pct = (level / 5) * 100;
   return (
     <div className="space-y-1.5">
@@ -24,14 +26,12 @@ function SkillBar({ name, level, delay }: { name: string; level: number; delay: 
       </div>
       <div className="h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
         <motion.div
-          className="h-full rounded-full"
-          style={{
-            background: `linear-gradient(90deg, #00f5d4 0%, #6366f1 ${pct}%)`,
-          }}
-          initial={{ width: 0 }}
-          whileInView={{ width: `${pct}%` }}
+          className="h-full w-full rounded-full origin-left"
+          style={{ background: 'var(--accent)' }}
+          initial={{ scaleX: prefersReducedMotion ? pct / 100 : 0 }}
+          whileInView={{ scaleX: pct / 100 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay, ease: 'easeOut' }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay, ease: [0.25, 1, 0.5, 1] }}
         />
       </div>
     </div>
@@ -42,20 +42,20 @@ function SkillCategoryCard({ category, index }: { category: SkillCategory; index
   return (
     <motion.div
       className="glass-card p-6"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-400/10">
-          <DynamicIcon name={category.icon} size={18} className="text-cyan-400" />
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/10">
+          <DynamicIcon name={category.icon} size={20} className="text-cyan-400" />
         </div>
         <h3 className="font-semibold text-slate-100">{category.category}</h3>
       </div>
 
       <div className="space-y-4">
-        {category.skills.sort((a, b) => b.level - a.level).map((skill, i) => (
+        {useMemo(() => [...category.skills].sort((a, b) => b.level - a.level), [category.skills]).map((skill, i) => (
           <SkillBar key={skill.name} name={skill.name} level={skill.level} delay={index * 0.1 + i * 0.06} />
         ))}
       </div>
@@ -67,13 +67,11 @@ export function Skills({ skills }: SkillsProps) {
   return (
     <section id="skills" className="relative">
       {/* Subtle section divider glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent" />
 
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="tech stack"
           headline="Skills & Expertise"
-          sub="Depth across the full engineering stack, from cloud infrastructure to frontend delivery."
+          sub="Cloud infrastructure to frontend delivery — with depth at every layer of the stack."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -32,17 +32,17 @@ function ExperienceCard({ entry, index }: { entry: ExperienceEntry; index: numbe
       className="relative pl-8 group"
     >
       {/* Timeline spine */}
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-slate-800 group-last:bg-gradient-to-b group-last:from-slate-800 group-last:to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-slate-800 group-last:bg-gradient-to-b group-last:from-slate-800 group-last:to-transparent" />
       {/* Timeline dot */}
       <div className="absolute left-[-4.5px] top-5 h-2.5 w-2.5 rounded-full border-2 border-cyan-400 bg-slate-950 ring-4 ring-slate-950" />
 
-      <div className="glass-card p-6 mb-8 transition-all duration-300 hover:border-cyan-400/35">
+      <div className="glass-card p-6 mb-6 transition-colors duration-300 hover:border-cyan-400/40">
         {/* Header row */}
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <Building2 size={14} className="text-slate-500 shrink-0" />
-              <span className="text-sm font-semibold text-cyan-400">{entry.company}</span>
+              <span className="text-sm font-semibold text-cyan-400 truncate">{entry.company}</span>
             </div>
             <h3 className="text-lg font-bold text-slate-100">{entry.role}</h3>
           </div>
@@ -58,7 +58,9 @@ function ExperienceCard({ entry, index }: { entry: ExperienceEntry; index: numbe
         {/* Toggle highlights */}
         <button
           onClick={() => setExpanded((v) => !v)}
-          className="mt-4 flex items-center gap-1.5 text-xs font-medium text-cyan-400/80 hover:text-cyan-400 transition-colors"
+          aria-expanded={expanded}
+          aria-controls={`highlights-${entry.id}`}
+          className="mt-4 flex items-center gap-1.5 text-xs font-medium text-cyan-400/80 hover:text-cyan-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
         >
           <motion.span
             animate={{ rotate: expanded ? 180 : 0 }}
@@ -69,22 +71,33 @@ function ExperienceCard({ entry, index }: { entry: ExperienceEntry; index: numbe
           {expanded ? 'Hide' : 'Show'} highlights
         </button>
 
-        {/* Highlights */}
-        <motion.div
-          initial={false}
-          animate={{ height: expanded ? 'auto' : 0, opacity: expanded ? 1 : 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="overflow-hidden"
+        {/* Highlights — grid-template-rows avoids layout-thrashing height animation */}
+        <div
+          id={`highlights-${entry.id}`}
+          aria-hidden={!expanded}
+          style={{
+            display: 'grid',
+            gridTemplateRows: expanded ? '1fr' : '0fr',
+            transition: 'grid-template-rows 300ms cubic-bezier(0.25, 1, 0.5, 1)',
+          }}
         >
-          <ul className="mt-4 space-y-2 border-t border-slate-800 pt-4">
-            {entry.highlights.map((h, i) => (
-              <li key={i} className="flex gap-2.5 text-sm text-slate-400">
-                <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60" />
-                <span className="leading-relaxed">{h}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+          <div className="overflow-hidden">
+            <motion.div
+              initial={false}
+              animate={{ opacity: expanded ? 1 : 0 }}
+              transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+            >
+              <ul className="mt-4 space-y-2 border-t border-slate-800 pt-4">
+                {entry.highlights.map((h, i) => (
+                  <li key={i} className="flex gap-2.5 text-sm text-slate-400">
+                    <span className="mt-[5px] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400/60" />
+                    <span className="leading-relaxed">{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Tech badges */}
         <div className="mt-4 flex flex-wrap gap-2">
@@ -102,7 +115,6 @@ export function Experience({ config }: ExperienceProps) {
     <section id="experience" className="relative">
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="career"
           headline="Experience"
           sub={config.tagline}
           align="left"
