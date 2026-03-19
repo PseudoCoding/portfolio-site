@@ -119,7 +119,7 @@ export function Experience({ config }: ExperienceProps) {
           sub={config.tagline}
         />
 
-        <div className="mt-8">
+        <div className="relative mt-8">
           {config.entries.map((entry, i) => (
             <ExperienceCard key={entry.id} entry={entry} index={i} />
           ))}
