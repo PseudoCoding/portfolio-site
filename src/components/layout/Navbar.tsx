@@ -7,7 +7,7 @@
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, FileDown } from 'lucide-react';
+import { Menu, X, Github, Linkedin, FileDown, Terminal } from 'lucide-react';
 import type { SiteMeta } from '../../types';
 
 interface NavbarProps {
@@ -113,6 +113,15 @@ export function Navbar({ meta }: NavbarProps) {
 
           {/* Social icons + CTA */}
           <div className="hidden items-center gap-3 xl:flex">
+            {/* Command palette trigger */}
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-palette'))}
+              aria-label="Open command palette (⌘K)"
+              className="flex items-center gap-1.5 rounded-md border border-slate-800 px-2.5 py-1.5 font-mono text-xs text-slate-600 transition-colors hover:border-slate-700 hover:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a]"
+            >
+              <Terminal size={11} />
+              ⌘K
+            </button>
             <a
               href={meta.githubUrl}
               target="_blank"

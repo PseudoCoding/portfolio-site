@@ -11,6 +11,7 @@
 import { config } from './config';
 import { MotionConfig } from 'framer-motion';
 import { ScrollProgress } from './components/ui/ScrollProgress';
+import { CommandPalette } from './components/ui/CommandPalette';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
@@ -38,6 +39,9 @@ export default function App() {
 
         {/* Scroll progress indicator at the very top of the viewport */}
         <ScrollProgress />
+
+        {/* Terminal command palette — ⌘K / Ctrl+K to open */}
+        <CommandPalette meta={config.meta} contact={config.contact} />
 
         {/* Navigation */}
         <Navbar meta={config.meta} />

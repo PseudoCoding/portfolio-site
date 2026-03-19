@@ -16,6 +16,7 @@ console.log(
   '// Stack: React · TypeScript · Vite · Tailwind · Framer Motion\n' +
   '// Host:  Cloudflare Pages\n' +
   '//\n' +
+  '// Pro tip: press ⌘K (or Ctrl+K) for the command palette.\n' +
   "// I'm actively looking for a principal / staff role.\n" +
   '// Reach out: devin@pseudocoding.xyz\n' +
   '// Source:    github.com/PseudoCoding\n' +
