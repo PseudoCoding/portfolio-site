@@ -75,7 +75,7 @@ export const config: SiteConfig = {
           'Architected and deployed Useful 2.0, a customizable resource hub built with React and TypeScript, designed for extensibility and rapid content iteration.',
           'Integrated AI-assisted development workflows — GitHub Copilot, Claude Code, and LLM APIs — to accelerate iteration speed and reduce manual development effort across multiple open-source projects.',
         ],
-        technologies: ['React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'Cloudflare Workers'],
+        technologies: ['React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'Cloudflare Workers', 'Cloudflare Pages', 'OpenAI'],
       },
       {
         id: 'ensemble',
@@ -164,6 +164,7 @@ export const config: SiteConfig = {
         { name: 'JavaScript', level: 5 },
         { name: 'Node.js', level: 5 },
         { name: 'C#', level: 4 },
+        { name: 'HCL', level: 5 },
         { name: 'Java', level: 5 },
         { name: 'Python', level: 3 },
         { name: 'Bash', level: 3 },
