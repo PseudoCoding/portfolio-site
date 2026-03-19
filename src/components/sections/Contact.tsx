@@ -30,7 +30,6 @@ export function Contact({ contact, meta }: ContactProps) {
 
       <div className="section-wrapper">
         <SectionHeader
-          eyebrow="get in touch"
           headline={contact.heading}
           sub={contact.subheading}
         />
@@ -44,55 +43,49 @@ export function Contact({ contact, meta }: ContactProps) {
           className="mx-auto max-w-2xl"
         >
           <div className="glass-card p-6 text-center">
-            <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
-              {/* GitHub */}
-              <a
-                href={meta.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                <Github size={16} />
-                GitHub
-                <ArrowUpRight size={13} className="opacity-60" />
-              </a>
-
-              {/* LinkedIn */}
-              <a
-                href={meta.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-outline"
-              >
-                <Linkedin size={16} />
-                LinkedIn
-                <ArrowUpRight size={13} className="opacity-60" />
-              </a>
-
-              {/* Email: only shown if configured */}
-              {contact.email && (
-                <a href={`mailto:${contact.email}`} className="btn-outline">
-                  <Mail size={16} />
-                  {contact.email}
-                </a>
-              )}
-            </div>
-
-            {/* Resume CTA */}
-            <div className="border-t border-slate-800 pt-8">
-              <p className="mb-4 text-sm text-slate-400">
-                Need the formal version?
-              </p>
+            {/* Primary CTAs — resume first for hiring managers */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
               <a
                 href={meta.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary mx-auto"
+                className="btn-primary"
               >
                 <FileDown size={16} />
                 Download Résumé
               </a>
-              <p className="mt-3 font-mono text-xs text-slate-600">PDF · Always up to date</p>
+
+              {contact.email && (
+                <a href={`mailto:${contact.email}`} className="btn-outline">
+                  <Mail size={16} />
+                  Email
+                </a>
+              )}
+            </div>
+
+            {/* Secondary social links */}
+            <div className="mt-6 flex items-center justify-center gap-6 border-t border-slate-800 pt-6">
+              <a
+                href={meta.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm text-slate-500 transition-colors hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
+              >
+                <Github size={14} />
+                GitHub
+                <ArrowUpRight size={12} className="opacity-50" />
+              </a>
+              <span className="h-px w-6 bg-slate-800" />
+              <a
+                href={meta.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm text-slate-500 transition-colors hover:text-cyan-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
+              >
+                <Linkedin size={14} />
+                LinkedIn
+                <ArrowUpRight size={12} className="opacity-50" />
+              </a>
             </div>
           </div>
         </motion.div>

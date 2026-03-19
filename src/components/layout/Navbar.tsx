@@ -15,10 +15,9 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Education', href: '#education' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
   { label: 'GitHub', href: '#github' },
   { label: 'Community', href: '#community' },
   { label: 'About', href: '#hobbies' },
@@ -80,7 +79,7 @@ export function Navbar({ meta }: NavbarProps) {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="font-mono text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
+            className="font-mono text-base font-bold text-cyan-400 hover:text-cyan-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
           >
             <span className="text-slate-500">{'// '}</span>
             PseudoCoding

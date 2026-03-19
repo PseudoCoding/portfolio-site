@@ -4,7 +4,7 @@
  * Root application component.
  *
  * Section order (can be reordered here):
- *   Hero → Experience → Skills → Projects → Community → Hobbies → Testimonials → Contact
+ *   Hero → Projects → Experience → Skills → GitHubProjects → Community → Testimonials → Hobbies → EducationAndCerts → Contact
  *
  * All content is imported from `src/config.ts`. No content lives in component files.
  */
@@ -45,14 +45,14 @@ export default function App() {
         {/* Main content */}
         <main>
           <Hero hero={config.hero} meta={config.meta} />
-          <Experience config={config.experience} />
-          <EducationAndCerts education={config.education} certifications={config.certifications} />
-          <Skills skills={config.skills} />
           <Projects projects={config.projects} />
+          <Experience config={config.experience} />
+          <Skills skills={config.skills} />
           <GitHubProjects projects={config.githubProjects} />
           <Community entries={config.community} />
-          <Hobbies hobbies={config.hobbies} />
           <Testimonials testimonials={config.testimonials} />
+          <Hobbies hobbies={config.hobbies} />
+          <EducationAndCerts education={config.education} certifications={config.certifications} />
           <Contact contact={config.contact} meta={config.meta} />
         </main>
 

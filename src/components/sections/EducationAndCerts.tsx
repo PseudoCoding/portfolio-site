@@ -73,7 +73,7 @@ export function EducationAndCerts({ education, certifications }: EducationAndCer
   return (
     <section id="education" className="relative">
 
-      <div className="section-wrapper">
+      <div className="section-wrapper py-16">
         <SectionHeader
           headline="Education & Certifications"
           align="left"

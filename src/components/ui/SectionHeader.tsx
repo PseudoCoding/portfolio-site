@@ -32,11 +32,11 @@ export function SectionHeader({
       {eyebrow && (
         <span className="mono-label mb-3 block">// {eyebrow}</span>
       )}
-      <h2 className="text-3xl font-bold tracking-tight text-slate-100 md:text-4xl lg:text-5xl">
+      <h2 className="text-4xl font-bold tracking-tight text-slate-100 md:text-5xl lg:text-6xl">
         {headline}
       </h2>
       {sub && (
-        <p className="mt-4 text-base leading-relaxed text-slate-400">{sub}</p>
+        <p className="mt-5 text-base leading-relaxed text-slate-400">{sub}</p>
       )}
     </motion.div>
   );

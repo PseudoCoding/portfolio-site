@@ -48,7 +48,7 @@ export function Community({ entries }: CommunityProps) {
           sub="Meetups, mentorship, and open-source — investing in the engineers around me."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {entries.map((e, i) => (
             <CommunityCard key={e.title} entry={e} index={i} />
           ))}

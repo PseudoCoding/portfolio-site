@@ -12,7 +12,7 @@
  */
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, FileDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Github, Linkedin, FileDown } from 'lucide-react';
 import type { HeroConfig, SiteMeta } from '../../types';
 
 interface HeroProps {
@@ -41,24 +41,9 @@ function Cursor() {
   return (
     <motion.span
       aria-hidden="true"
-      className="ml-0.5 inline-block h-7 w-0.5 bg-cyan-400 align-middle"
+      className="ml-0.5 inline-block h-9 w-0.5 bg-cyan-400 align-middle"
       animate={{ opacity: [1, 0] }}
       transition={{ duration: 0.7, repeat: Infinity, repeatType: 'reverse' }}
-    />
-  );
-}
-
-/** Dot-grid SVG pattern tiled across the section background */
-function DotGrid() {
-  return (
-    <div
-      className="pointer-events-none absolute inset-0 opacity-30"
-      style={{
-        backgroundImage: `radial-gradient(circle, rgba(134,227,61,0.22) 1px, transparent 1px)`,
-        backgroundSize: '28px 28px',
-        maskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%)',
-        WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%)',
-      }}
     />
   );
 }
@@ -73,6 +58,27 @@ const itemVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
+
+/** Subtle scroll cue at the bottom of the hero — disappears after first scroll */
+function ScrollCue({ visible }: { visible: boolean }) {
+  const prefersReducedMotion = useReducedMotion();
+  return (
+    <motion.div
+      animate={{ opacity: visible ? 1 : 0 }}
+      transition={{ duration: 0.6 }}
+      className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1"
+      aria-hidden="true"
+    >
+      <span className="font-mono text-[10px] tracking-widest text-slate-700">scroll</span>
+      <motion.div
+        animate={prefersReducedMotion ? undefined : { y: [0, 5, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <ChevronDown size={14} className="text-slate-700" />
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export function Hero({ hero, meta }: HeroProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -123,13 +129,20 @@ export function Hero({ hero, meta }: HeroProps) {
   // For reduced motion: show the first tagline statically without typing
   const visibleTagline = prefersReducedMotion ? (hero.taglines[0] ?? '') : displayed;
 
+  // Scroll cue: fade out once user scrolls past the hero
+  const [hasScrolled, setHasScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 80) setHasScrolled(true); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section
       id="hero"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
     >
       <AmbientBlobs />
-      <DotGrid />
 
       {/* ── Main content ── */}
       <motion.div
@@ -146,23 +159,30 @@ export function Hero({ hero, meta }: HeroProps) {
         {/* Name */}
         <motion.h1
           variants={itemVariants}
-          className="text-5xl font-bold tracking-tight text-slate-100 sm:text-6xl lg:text-8xl"
+          className="text-6xl font-bold leading-none tracking-tighter text-slate-100 sm:text-8xl lg:text-9xl xl:text-[10rem]"
         >
           {hero.name}
         </motion.h1>
 
-        {/* Handle */}
-        <motion.p variants={itemVariants} className="mt-4 font-mono text-sm text-slate-500">
+        {/* Handle — brand mark, links to GitHub */}
+        <motion.a
+          variants={itemVariants}
+          href={meta.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${hero.handle} on GitHub`}
+          className="mt-3 inline-block font-mono text-sm tracking-widest text-cyan-400/50 transition-colors hover:text-cyan-400/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-1 focus-visible:ring-offset-[#0a0a0a] rounded-sm"
+        >
           {hero.handle}
-        </motion.p>
+        </motion.a>
 
         {/* Typing tagline */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 flex min-h-12 items-center justify-center"
+          className="mt-8 flex min-h-14 items-center justify-center"
         >
           {/* Visual typing animation — hidden from assistive technology */}
-          <span aria-hidden="true" className="text-xl font-semibold text-cyan-400 sm:text-2xl md:text-3xl">
+          <span aria-hidden="true" className="text-2xl font-semibold text-cyan-400 sm:text-3xl md:text-4xl">
             {visibleTagline}
             {!prefersReducedMotion && <Cursor />}
           </span>
@@ -175,7 +195,7 @@ export function Hero({ hero, meta }: HeroProps) {
         {/* Bio */}
         <motion.div variants={itemVariants} className="mt-8 space-y-3">
           {hero.bio.map((para, i) => (
-            <p key={i} className="mx-auto max-w-2xl text-base leading-relaxed text-slate-400 text-balance">
+            <p key={i} className="mx-auto max-w-2xl text-base leading-relaxed text-slate-400 md:text-lg text-balance">
               {para}
             </p>
           ))}
@@ -230,6 +250,7 @@ export function Hero({ hero, meta }: HeroProps) {
         </motion.div>
       </motion.div>
 
+      <ScrollCue visible={!hasScrolled} />
     </section>
   );
 }

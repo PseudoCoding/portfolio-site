@@ -40,7 +40,7 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
       <Quote size={22} className="text-cyan-400/40" />
 
       {/* Quote text */}
-      <p className="flex-1 text-sm leading-relaxed text-slate-300 italic">"{t.quote}"</p>
+      <p className="flex-1 text-base leading-relaxed text-slate-300 italic">"{t.quote}"</p>
 
       {/* Author */}
       <div className="flex items-center gap-3 border-t border-slate-800 pt-4">
@@ -49,7 +49,7 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
         </div>
         <div className="min-w-0">
           <p className="text-sm font-semibold text-slate-100 truncate">{t.author}</p>
-          <p className="text-xs text-slate-500 truncate">{t.role} · {t.company}</p>
+          <p className="text-xs text-slate-400 truncate">{t.role} · {t.company}</p>
         </div>
       </div>
     </motion.div>
