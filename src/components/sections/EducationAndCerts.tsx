@@ -23,7 +23,7 @@ function EducationCard({ entry, index }: { entry: EducationEntry; index: number 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass-card p-6"
+      className="glass-card-hover p-6"
     >
       <div className="mb-4 flex items-center gap-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-cyan-400/10">
@@ -76,7 +76,6 @@ export function EducationAndCerts({ education, certifications }: EducationAndCer
       <div className="section-wrapper py-16">
         <SectionHeader
           headline="Education & Certifications"
-          align="left"
         />
 
         <div className="grid gap-10 lg:grid-cols-2">

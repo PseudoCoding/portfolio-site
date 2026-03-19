@@ -117,7 +117,6 @@ export function Experience({ config }: ExperienceProps) {
         <SectionHeader
           headline="Experience"
           sub={config.tagline}
-          align="left"
         />
 
         <div className="mt-8">

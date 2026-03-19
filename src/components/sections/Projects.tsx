@@ -82,9 +82,7 @@ function ProjectCard({
     >
       <TiltCard className="h-full">
         <div
-          className={`glass-card h-full p-6 flex flex-col transition-colors duration-300 hover:border-cyan-400/40 ${
-            featured ? 'border-l-2 border-l-cyan-400/50' : ''
-          }`}
+          className={`glass-card h-full p-6 flex flex-col transition-colors duration-300 hover:border-cyan-400/40`}
         >
           {/* Title row */}
           <div className="flex items-start justify-between gap-3 mb-3">
