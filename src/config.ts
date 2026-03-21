@@ -61,8 +61,8 @@ export const config: SiteConfig = {
     entries: [
       {
         id: 'independent',
-        company: 'Freelance / Open Source',
-        role: 'Independent Principal Software Engineer',
+        company: 'Independent Technical Projects',
+        role: 'Principal Software Engineer',
         period: 'October 2025 – Present',
         summary:
           'Building and releasing open-source projects and AI experiments while '
