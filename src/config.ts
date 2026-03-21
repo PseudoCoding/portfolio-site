@@ -42,13 +42,13 @@ export const config: SiteConfig = {
     ],
     bio: [
       '13+ years building and leading engineering platforms that power healthcare at scale. '
-        + 'I own the hard problems: architecting distributed systems, defining platform strategy, '
-        + 'and establishing the engineering standards that let teams ship with confidence.',
+      + 'I own the hard problems: architecting distributed systems, defining platform strategy, '
+      + 'and establishing the engineering standards that let teams ship with confidence.',
       'After leading an organization of 40+ engineers, I returned to the IC track by choice: '
-        + 'to stay close to the work that matters most: multi-region infrastructure, zero-trust security, '
-        + 'event-driven architecture, and the DevOps culture that makes scale sustainable. '
-        + "I'm actively looking for a principal or staff role where I can own deep technical problems "
-        + 'and help engineering organizations grow.',
+      + 'to stay close to the work that matters most: multi-region infrastructure, zero-trust security, '
+      + 'event-driven architecture, and the DevOps culture that makes scale sustainable. '
+      + "I'm actively looking for a principal or staff role where I can own deep technical problems "
+      + 'and help engineering organizations grow.',
     ],
     cta: { label: 'View Projects', href: '#projects' },
     ctaSecondary: { label: 'Résumé (PDF)', href: '/devinhoude-resume.pdf' },
@@ -77,24 +77,19 @@ export const config: SiteConfig = {
       {
         id: 'ensemble',
         company: 'Ensemble Health Partners',
-        role: 'Principal Software Engineer, Platform & Product Engineering',
+        role: 'Associate Vice President → Principal Software Engineer',
         period: 'April 2022 – October 2025',
         summary:
-          'Architectural owner of the Azure platform across a large-scale revenue cycle management company. '
+          'Served as AVP of Engineering before returning to the IC track by choice as Architectural Owner of the Azure platform. '
           + 'Provided technical leadership and coordinated execution across a 30+ engineer organization delivering '
           + 'real-time event processing, platform modernization, and a full application platform redesign.',
         highlights: [
-          'Led the architectural transition of a legacy monolith to a modern Revenue Cycle Management platform utilizing micro-UIs and microservices, accelerating deployment frequency from monthly releases to a reliable bi-weekly cadence, with core teams achieving multiple releases per week.',
-          'Engineered a robust event engine processing over 864,000 real-time healthcare events daily, successfully shifting data processing from legacy overnight batch runs to a continuous stream with under 15 minutes of latency.',
-          'Led the design and technical direction of a voice-based AI platform integrated with enterprise telephony, enabling automated support interactions and reducing customer service demand by 30% across the organization.',
-          'Guided architectural improvements that reduced platform response times from tens of seconds to sub-second levels, raising uptime from 70% to 95% and establishing a new reliability baseline.',
-          'Drove the enterprise-wide adoption of GitHub Copilot across a 250-member technology organization spanning data, product, security, and AI engineering, establishing a 35% active daily utilization rate to safely modernize engineering workflows at scale.',
-          'Introduced Terraform as the core IaC standard, eliminating manual production changes and building the reusable module library adopted by all product teams.',
-          'Delivered a shared CI/CD pipeline library for Azure DevOps, standardizing deployment workflows and accelerating developer productivity at scale.',
-          'Implemented OAuth 2.0 and enterprise-wide RBAC policies; integrated Snyk, Wiz, and Probely into the SDLC to proactively mitigate production vulnerabilities.',
-          'Aligned Agile delivery practices across teams, synchronizing sprint cadences and enabling a predictable, organization-wide two-week release cycle.',
-          'Established a Docusaurus-based documentation culture spanning architecture decision records, component docs, and blameless post-incident reviews.',
-          'Launched a monthly cross-team knowledge-sharing community that became the primary engineering standards forum across the organization.',
+          'Architected the transition of a legacy monolith to a modern micro-frontend and microservice Revenue Cycle Management platform, accelerating core team deployments from monthly releases to multiple times a week.',
+          'Engineered a robust event engine processing over 864,000 real-time healthcare events daily, pivoting legacy overnight batch workloads into continuous streams with under 15 minutes of latency.',
+          'Led the technical direction of a voice-based AI platform integrated with enterprise telephony, automating support interactions and reducing customer service demand by 30%.',
+          'Guided platform-wide architectural improvements that reduced response times from tens of seconds to sub-second levels, raising overall uptime from 70% to 95%.',
+          'Introduced Terraform as the core IaC standard, modernized CI/CD via shared pipelines, and integrated zero-trust policies, enterprise RBAC, and automated vulnerability scanning into the SDLC.',
+          'Scaled engineering culture across a 250-member organization: drove GitHub Copilot to a 35% daily active rate, harmonized Agile release cadences, and established standard templates for ADRs and post-incident reviews.',
         ],
         technologies: [
           'Azure', 'Terraform', 'Azure DevOps', 'TypeScript', 'React', 'Node.js',
@@ -103,51 +98,31 @@ export const config: SiteConfig = {
           'Python', 'Key Vault', 'Azure Functions', 'Entity Framework', 'AI/Voice Platforms',
         ],
       },
-    {
-      id: 'optum-principal',
-      company: 'Optum',
-      role: 'Senior → Principal Software Engineer',
-      period: '2016 – 2022',
-      summary:
-        'Spent six years growing from Senior to Principal Engineer across Platform Engineering, Open-Source Program Office, and Enterprise Architecture. ' +
-        'Architected production systems across healthcare domains, built internal developer platforms used by thousands of engineers, ' +
-        'and established security, IaC, and open-source standards adopted organization-wide.',
-      highlights: [
-        'Defined and delivered an enterprise secrets-scanning capability monitoring 150,000+ repositories via scheduled sweeps and real-time GitHub App webhooks, surfacing findings in a public engineering dashboard to drive organic remediation.',
-        'Architected and launched a self-service eventing platform enabling any team to onboard as event producers or consumers through a zero-ticket workflow; owned the infrastructure and the frontend management application.',
-        "Reduced SDOH platform operational costs by over 50% while delivering the organization's first multi-lingual, full-stack TypeScript Azure application with end-to-end Terraform infrastructure from day one.",
-        'Led the Open-Source Program Office: defined repository quality standards, partnered with legal on IP protection, and built a developer-first contribution model for a Fortune 50 technology organization.',
-        'Built and grew the internal DevOps Community from ~100 to 500+ engineers through monthly events and cross-team tooling forums.',
-        'Architected multi-region load balancing (AWS Route 53) and static asset delivery (CloudFront) for high-traffic provider applications; designed a dynamic API gateway for Kubernetes-hosted microservices.',
-        'Developed and evangelized diagnostic, logging, and security libraries adopted across multiple provider-facing teams, standardizing best practices and reducing duplicated engineering effort.',
-        'Built "Useful", a centralized YAML-in-Git resource hub that became the default navigation tool for engineers across a 10K+ person technology organization.',
-        'Designed and implemented CI/CD pipelines enabling daily deployment cycles across provider applications; mentored and onboarded new engineering teams on platform best practices.',
-        'Contributed to the architectural evolution of the core provider tool from a monolithic codebase to a modular, scalable architecture, improving long-term maintainability and deployment efficiency.',
-      ],
-      technologies: [
-        'TypeScript', 'JavaScript', 'Node.js', 'React', 'Java', '.NET',
-        'Azure', 'Terraform', 'Kubernetes', 'OpenShift', 'Docker',
-        'AWS Route 53', 'CloudFront', 'GitHub Apps', 'GitHub Enterprise',
-        'Jenkins', 'Service Bus', 'Splunk', 'Webhooks', 'YAML',
-      ],
-    },
-    {
-      id: 'optum-tdp',
-      company: 'UnitedHealth Group / Optum',
-      role: 'Technology Development Program Associate → Application Developer',
-      period: '2012 – 2016',
-      summary:
-        'Joined straight out of college (B.S. Computer Science, Western New England University, 2012) through a '
-        + '2-year rotational program across three distinct engineering domains. '
-        + 'Built production software in every rotation before becoming a key contributor to a Java platform, the trajectory that led directly to a principal engineering path.',
-      highlights: [
-        'Completed three rotations across healthcare reporting (.NET), employee platform support, and large-scale Java products, shipping production software throughout.',
-        'Built an ICD-10 diagnostic code mapping tool and .NET companion applications for a mainframe support organization, reducing manual mapping overhead for clinical teams.',
-        'Refactored legacy employee services platform to clean up code, increase reusability, and improved debugging capabilities',
-        'Became a key contributor to a JDBC-based Java platform, taking ownership of deployments and API internals and establishing the track record that accelerated a principal engineering trajectory.',
-      ],
-      technologies: ['.NET', 'C#', 'Java', 'SQL', 'JDBC', 'Maven', 'Jenkins'],
-    },],
+      {
+        id: 'optum-combined',
+        company: 'Optum / UnitedHealth Group',
+        role: 'Technology Development Program → Principal Software Engineer',
+        period: '2012 – 2022',
+        summary:
+          'A decade-long trajectory from a new-grad rotational program to Principal Engineer. ' +
+          'Architected production systems across healthcare domains, built internal developer platforms used by thousands of engineers, ' +
+          'and established security, IaC, and open-source standards adopted organization-wide.',
+        highlights: [
+          'Defined and delivered an enterprise secrets-scanning capability monitoring 150,000+ repositories via scheduled sweeps and real-time GitHub App webhooks, surfacing findings in a public engineering dashboard to drive organic remediation.',
+          'Architected and launched a self-service eventing platform enabling any team to onboard as event producers or consumers through a zero-ticket workflow; owned the infrastructure and the frontend management application.',
+          'Reduced SDOH platform operational costs by over 50% while delivering the organization\'s first multi-lingual, full-stack TypeScript Azure application with end-to-end Terraform infrastructure from day one.',
+          'Led the Open-Source Program Office: defined repository quality standards, partnered with legal on IP protection, and built a developer-first contribution model for a Fortune 50 technology organization.',
+          'Built and grew the internal DevOps Community from ~100 to 500+ engineers through monthly events and cross-team tooling forums.',
+          'Became a key contributor to a JDBC-based Java platform and completed clinical mapping tools during early career rotations, establishing the track record that accelerated a principal engineering trajectory.'
+        ],
+        technologies: [
+          // Combined list of the most relevant top-tier tech:
+          'TypeScript', 'Node.js', 'React', 'Java', '.NET', 'C#',
+          'Azure', 'Terraform', 'Kubernetes', 'Docker',
+          'GitHub Apps', 'GitHub Enterprise', 'Jenkins', 'SQL'
+        ],
+      }
+      ,],
   },
 
   // ─── Skills ───────────────────────────────────────────────────────────────
@@ -340,7 +315,7 @@ export const config: SiteConfig = {
         'Open engineering dashboard visible to all of technology, driving organic, ownership-based remediation.',
         'Zero enforcement friction; education-first design increased voluntary compliance.',
       ],
-      impact: 'Reduced secrets exposure risk across thousands of repositories at a Fortune 50 healthcare company.',
+      impact: 'Reduced secrets exposure risk across > 150,000 repositories at a Fortune 50 healthcare company.',
       technologies: ['Node.js', 'JavaScript', 'GitHub Apps', 'Webhooks', 'React', 'Docker', 'MongoDB', 'GitHub Enterprise'],
       featured: true,
     },
@@ -356,7 +331,7 @@ export const config: SiteConfig = {
         'Eliminated informal data-sharing patterns (e.g., point-to-point REST polling) across dozens of teams.',
       ],
       impact: 'Decoupled 30+ teams from direct service dependencies, improving system resilience and deployment independence.',
-      technologies: ['Kafka', 'Node.js', 'TypeScript', 'React', 'Kubernetes', 'Terraform'],
+      technologies: ['Azure Service Bus', 'Node.js', 'TypeScript', 'React', 'Kubernetes', 'Terraform', 'MongoDB'],
       featured: true,
     },
     {
@@ -370,7 +345,7 @@ export const config: SiteConfig = {
         'Became the default start page for hundreds of engineers navigating a complex org structure.',
         'Hubot integrations extended the hub into chat, letting you find resources without leaving your workflow.',
       ],
-      impact: 'Reduced time-to-information for engineers navigating a 10K+ person technology organization.',
+      impact: 'Reduced time-to-information for engineers navigating a > 20,000 person technology organization.',
       technologies: ['React', 'Node.js', 'YAML', 'GitHub', 'Hubot'],
     },
     {
@@ -384,23 +359,23 @@ export const config: SiteConfig = {
         'Standardized micro-service contract patterns that reduced cross-team integration friction.',
         'Paired with a reusable CI/CD pipeline library that cut new service onboarding from days to hours.',
       ],
-      impact: 'Unblocked parallel team delivery and reduced deployment risk for a critical revenue-cycle system.',
-      technologies: ['React', 'Module Federation', 'TypeScript', 'Azure', 'Azure DevOps', 'Terraform'],
+      impact: 'Unblocked parallel team delivery and reduced deployment risk for a critical revenue-cycle system across 10 teams.',
+      technologies: ['React', 'Module Federation', 'TypeScript', 'Azure', 'Azure DevOps', 'Terraform', 'C#'],
     },
     {
       id: 'sdoh',
       title: 'Social Determinants of Health Platform',
       description:
-        "Greenfield Azure cloud application addressing social determinants of health, Optum's first multi-lingual application, " +
+        "Greenfield multi-lingual Azure cloud application addressing social determinants of health " +
         'and an early proving ground for full Terraform-driven infrastructure.',
       highlights: [
         'End-to-end infrastructure as code via Terraform from day zero.',
-        'Full-stack TypeScript (frontend + backend), first multi-lingual app in the portfolio.',
+        'Full-stack TypeScript (frontend + backend) with full multi-lingual support.',
         'Direct Microsoft collaboration as early adopters on preview Azure services.',
       ],
       impact:
         'Established Terraform and TypeScript as validated patterns, accelerating future projects and the company-wide IaC library.',
-      technologies: ['Azure', 'Terraform', 'TypeScript', 'React', 'Node.js', 'Azure Functions'],
+      technologies: ['Azure', 'Terraform', 'TypeScript', 'React', 'Node.js', 'Azure Functions', 'CosmosDB', 'PostgreSQL'],
     },
   ],
 
@@ -454,7 +429,7 @@ export const config: SiteConfig = {
       title: 'Vypher',
       repo: 'PseudoCoding/vypher',
       description: 'A security-focused development tool. More details coming soon.',
-      languages: [ 'Go' ],
+      languages: ['Go'],
       technologies: ['CLI Tool', 'Security'],
       comingSoon: true,
     },
@@ -463,7 +438,7 @@ export const config: SiteConfig = {
       title: 'Knowledge Base',
       repo: 'PseudoCoding/knowledge-base',
       description: 'A structured documentation site capturing technology knowledge and engineering patterns.',
-      languages: [ 'Markdown' ],
+      languages: ['Markdown'],
       technologies: ['Documentation'],
       comingSoon: true,
     },
@@ -472,7 +447,7 @@ export const config: SiteConfig = {
       title: 'Dynamic Theming',
       repo: 'PseudoCoding/dynamic-theming',
       description: 'AI-generated themes for React applications. Dynamically produce and apply design tokens at runtime.',
-      languages: [ 'TypeScript', 'CSS' ],
+      languages: ['TypeScript', 'CSS'],
       technologies: ['React', 'OpenAI'],
       comingSoon: true,
     },

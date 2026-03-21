@@ -1,4 +1,4 @@
-# portfolio-2.0
+# portfolio-site
 
 Personal portfolio site for Devin Houde ([@PseudoCoding](https://github.com/PseudoCoding)).
 
