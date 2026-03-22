@@ -81,7 +81,7 @@ export const config: SiteConfig = {
         period: 'April 2022 – October 2025',
         summary:
           'Served as AVP of Engineering before returning to the IC track by choice as Architectural Owner of the Azure platform. '
-          + 'Provided technical leadership and coordinated execution across a 30+ engineer organization delivering '
+          + 'Provided technical leadership and coordinated execution across a 40+ engineer organization delivering '
           + 'real-time event processing, platform modernization, and a full application platform redesign.',
         highlights: [
           'Architected the transition of a legacy monolith to a modern micro-frontend and microservice Revenue Cycle Management platform, accelerating core team deployments from monthly releases to multiple times a week.',
