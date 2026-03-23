@@ -17,7 +17,7 @@ interface ContactProps {
 
 export function Contact({ contact, meta }: ContactProps) {
   return (
-    <section id="contact" className="relative pb-32">
+    <section id="contact" className="relative overflow-hidden pb-32">
       {/* Section divider */}
 
       {/* Bottom glow */}
