@@ -34,7 +34,7 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.55, delay: index * 0.13 }}
-      className="glass-card p-6 flex flex-col gap-4 hover:border-cyan-400/40 transition-colors duration-300"
+      className="glass-card p-6 flex flex-col gap-4 overflow-hidden hover:border-cyan-400/40 transition-colors duration-300"
     >
       {/* Quote icon */}
       <Quote size={22} className="text-cyan-400/40" />
@@ -47,9 +47,10 @@ function TestimonialCard({ t, index }: { t: Testimonial; index: number }) {
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-400/12 font-mono text-xs font-bold text-cyan-400 ring-1 ring-cyan-400/25">
           {initials}
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <p className="text-sm font-semibold text-slate-100 truncate">{t.author}</p>
-          <p className="text-xs text-slate-400 truncate">{t.role} · {t.company}</p>
+          <p className="text-xs text-slate-400 truncate">{t.role}</p>
+          <p className="text-xs text-slate-400 truncate">{t.company}</p>
         </div>
       </div>
     </motion.div>
