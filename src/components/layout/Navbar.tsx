@@ -70,7 +70,11 @@ export function Navbar({ meta }: NavbarProps) {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'backdrop-blur-xl border-b bg-slate-950/80 border-cyan-400/10'
+            : 'bg-transparent'
+        }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
           {/* Logo / wordmark */}
