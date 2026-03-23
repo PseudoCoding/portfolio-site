@@ -24,7 +24,7 @@ export const config: SiteConfig = {
     githubUrl: 'https://github.com/PseudoCoding',
     linkedinUrl: 'https://www.linkedin.com/in/pseudocoding/',
     // Drop your résumé into public/resume.pdf and change this to '/resume.pdf'
-    resumeUrl: '/devinhoude-resume.pdf',
+    resumeUrl: 'https://resume.r2.pseudocoding.xyz/devinhoude-resume.pdf',
   },
 
   // ─── Hero ─────────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ export const config: SiteConfig = {
       + 'and help engineering organizations grow.',
     ],
     cta: { label: 'View Projects', href: '#projects' },
-    ctaSecondary: { label: 'Résumé (PDF)', href: '/devinhoude-resume.pdf' },
+    ctaSecondary: { label: 'Résumé (PDF)', href: 'https://resume.r2.pseudocoding.xyz/devinhoude-resume.pdf' },
   },
 
   // ─── Experience ───────────────────────────────────────────────────────────

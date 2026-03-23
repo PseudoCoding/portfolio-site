@@ -8,7 +8,7 @@ const meta: SiteMeta = {
   description: 'Test',
   githubUrl: 'https://github.com/test',
   linkedinUrl: 'https://linkedin.com/in/test',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: 'https://resume.r2.pseudocoding.xyz/devinhoude-resume.pdf',
 };
 
 describe('Footer', () => {
