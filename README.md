@@ -68,6 +68,20 @@ When you add a new icon name, register it in [`src/components/ui/Icon.tsx`](src/
 
 ---
 
+## Automated AI Recommendations
+
+This repository includes a weekly GitHub Actions workflow that automatically opens Pull Requests for **Content**, **Aesthetics**, and **Library** updates based on AI suggestions. We leverage GitHub Models (`permissions: models: read`) to run the inference natively without external API keys.
+
+### Setup Instructions
+
+1. Ensure your GitHub account/organization has access to GitHub Models.
+2. The Action will automatically authenticate using the `GITHUB_TOKEN`.
+3. The GitHub Action will run automatically every Monday at midnight via cron, using `peter-evans/create-pull-request` to draft PRs. 
+
+> **Note:** You can also trigger the workflow manually from the "Actions" tab in GitHub.
+
+---
+
 ## Project Structure
 
 ```
