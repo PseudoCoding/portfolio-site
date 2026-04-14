@@ -68,11 +68,12 @@ export const config: SiteConfig = {
           'Building and releasing open-source projects and AI experiments while '
           + 'leveraging AI-assisted development workflows to accelerate iteration and drive reusable CI/CD patterns.',
         highlights: [
+          'Designed and released Vypher, an open-source CLI tool for detecting PII and PHI in source code, built for Finance and Healthcare compliance standards. Ships with 11 detection patterns, Luhn algorithm validation, SARIF output, and native binaries for macOS, Linux, and Windows via Homebrew, Scoop, and Docker.',
           'Built and released terraform-template, an open-source framework for automated Terraform workflows using GitHub Actions, enabling zero-touch infrastructure deployments and reusable CI/CD patterns.',
           'Architected and deployed Useful 2.0, a customizable resource hub built with React and TypeScript, designed for extensibility and rapid content iteration.',
           'Integrated AI-assisted development workflows (GitHub Copilot, Claude Code, and LLM APIs) to accelerate iteration speed and reduce manual development effort across multiple open-source projects.',
         ],
-        technologies: ['React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'Cloudflare Workers', 'Cloudflare Pages', 'OpenAI'],
+        technologies: ['Go', 'React', 'TypeScript', 'Terraform', 'GitHub Actions', 'GitHub Copilot', 'Claude Code', 'Docker', 'GoReleaser', 'Cloudflare Workers', 'Cloudflare Pages', 'OpenAI'],
       },
       {
         id: 'ensemble',
@@ -427,11 +428,16 @@ export const config: SiteConfig = {
     {
       id: 'vypher',
       title: 'Vypher',
-      repo: 'PseudoCoding/vypher',
-      description: 'A security-focused development tool. More details coming soon.',
+      repo: 'vypher-io/cli',
+      description:
+        'An advanced CLI tool for detecting PII and PHI in source code, built for Finance and Healthcare compliance standards. '
+        + 'Ships with 11 built-in detection patterns covering credit cards, SSNs, IBANs, MRNs, ICD-10 codes, crypto addresses, and more. '
+        + 'Uses the Luhn algorithm and keyword proximity detection to minimize false positives. '
+        + 'Outputs console, JSON, and SARIF reports compatible with GitHub Code Scanning. '
+        + 'Supports Homebrew (macOS/Linux), Scoop (Windows), and Docker with native binaries for amd64 and arm64.',
       languages: ['Go'],
-      technologies: ['CLI Tool', 'Security'],
-      comingSoon: true,
+      technologies: ['Go', 'Cobra', 'Docker', 'GoReleaser', 'GitHub Actions', 'Homebrew', 'Scoop', 'SARIF', 'VitePress', 'React', 'Vite', 'Tailwind CSS', 'Cloudflare'],
+      liveUrl: 'https://vypher.io',
     },
     {
       id: 'knowledge-base',
