@@ -383,6 +383,20 @@ export const config: SiteConfig = {
   // ─── GitHub / Open-Source Projects ────────────────────────────────────────
   githubProjects: [
     {
+      id: 'vypher',
+      title: 'Vypher',
+      repo: 'vypher-io/cli',
+      description:
+        'An advanced CLI tool for detecting PII and PHI in source code, built for Finance and Healthcare compliance standards. '
+        + 'Ships with 11 built-in detection patterns covering credit cards, SSNs, IBANs, MRNs, ICD-10 codes, crypto addresses, and more. '
+        + 'Uses the Luhn algorithm and keyword proximity detection to minimize false positives. '
+        + 'Outputs console, JSON, and SARIF reports compatible with GitHub Code Scanning. '
+        + 'Supports Homebrew (macOS/Linux), Scoop (Windows), and Docker with native binaries for amd64 and arm64.',
+      languages: ['Go'],
+      technologies: ['Go', 'Cobra', 'Docker', 'GoReleaser', 'GitHub Actions', 'Homebrew', 'Scoop', 'SARIF', 'VitePress', 'React', 'Vite', 'Tailwind CSS', 'Cloudflare'],
+      liveUrl: 'https://vypher.io',
+    },
+    {
       id: 'useful-2',
       title: 'Useful 2.0',
       repo: 'PseudoCoding/useful-2.0',
@@ -424,20 +438,6 @@ export const config: SiteConfig = {
         + 'Includes multi-environment configs, GitHub Actions CI/CD with tfsec/Checkov/Infracost, and a comprehensive Makefile.',
       languages: ['HCL', 'Makefile'],
       technologies: ['Terraform', 'Azure', 'GitHub Actions', 'tfsec', 'Checkov', 'Infracost'],
-    },
-    {
-      id: 'vypher',
-      title: 'Vypher',
-      repo: 'vypher-io/cli',
-      description:
-        'An advanced CLI tool for detecting PII and PHI in source code, built for Finance and Healthcare compliance standards. '
-        + 'Ships with 11 built-in detection patterns covering credit cards, SSNs, IBANs, MRNs, ICD-10 codes, crypto addresses, and more. '
-        + 'Uses the Luhn algorithm and keyword proximity detection to minimize false positives. '
-        + 'Outputs console, JSON, and SARIF reports compatible with GitHub Code Scanning. '
-        + 'Supports Homebrew (macOS/Linux), Scoop (Windows), and Docker with native binaries for amd64 and arm64.',
-      languages: ['Go'],
-      technologies: ['Go', 'Cobra', 'Docker', 'GoReleaser', 'GitHub Actions', 'Homebrew', 'Scoop', 'SARIF', 'VitePress', 'React', 'Vite', 'Tailwind CSS', 'Cloudflare'],
-      liveUrl: 'https://vypher.io',
     },
     {
       id: 'knowledge-base',
