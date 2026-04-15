@@ -24,7 +24,7 @@ export const config: SiteConfig = {
     githubUrl: 'https://github.com/PseudoCoding',
     linkedinUrl: 'https://www.linkedin.com/in/pseudocoding/',
     // Drop your résumé into public/resume.pdf and change this to '/resume.pdf'
-    resumeUrl: 'https://resume.r2.pseudocoding.xyz/devinhoude-resume.pdf',
+    resumeUrl: 'https://resume.pseudocoding.xyz/devinhoude-resume.pdf',
   },
 
   // ─── Hero ─────────────────────────────────────────────────────────────────
