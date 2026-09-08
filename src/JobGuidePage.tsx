@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import guideMarkdown from './job_guide.md?raw';
 
 interface GuideSection {
