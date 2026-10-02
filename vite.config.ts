@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Sitemap from 'vite-plugin-sitemap'
+import { LikeC4VitePlugin } from 'likec4/vite-plugin'
 
 import { cloudflare } from "@cloudflare/vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), cloudflare(), Sitemap({ hostname: 'https://pseudocoding.xyz' })],
+  plugins: [react(), LikeC4VitePlugin({}), cloudflare(), Sitemap({ hostname: 'https://pseudocoding.xyz' })],
 
   build: {
     /**

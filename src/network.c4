@@ -1,0 +1,24 @@
+specification {
+  element system
+  element storage
+}
+
+model {
+  unifiDreamMachine = system 'UniFi Dream Machine' {
+    description 'Home network gateway and controller'
+    technology 'UniFi'
+  }
+
+  nas = storage 'NAS' {
+    description 'Network-attached storage'
+  }
+
+  unifiDreamMachine -> nas 'connects to'
+}
+
+views {
+  view network {
+    title 'Home network'
+    include *
+  }
+}

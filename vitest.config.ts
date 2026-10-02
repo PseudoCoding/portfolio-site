@@ -12,6 +12,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@mocks': path.resolve(__dirname, './tests/__mocks__'),
+      'likec4:react': path.resolve(__dirname, './tests/__mocks__/likec4-react.tsx'),
     },
   },
   test: {

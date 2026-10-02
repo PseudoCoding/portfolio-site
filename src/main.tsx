@@ -1,8 +1,10 @@
-import { StrictMode } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
 import { JobGuidePage } from './JobGuidePage.tsx';
+
+const NetworkPage = lazy(() => import('./NetworkPage.tsx').then(({ NetworkPage: page }) => ({ default: page })));
 
 // Developer easter egg — for the curious ones who open DevTools
 console.log(
@@ -29,7 +31,15 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {(() => {
       const path = window.location.pathname.replace(/\/+$/, '') || '/';
-      return path === '/job-hunt' ? <JobGuidePage /> : <App />;
+      if (path === '/job-hunt') {
+        return <JobGuidePage />;
+      }
+
+      return path === '/network' ? (
+        <Suspense fallback={<main className="min-h-screen bg-slate-950" />}>
+          <NetworkPage />
+        </Suspense>
+      ) : <App />;
     })()}
   </StrictMode>,
 );

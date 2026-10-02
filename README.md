@@ -61,6 +61,10 @@ To retheme, update the CSS custom properties in [`src/index.css`](src/index.css)
 
 And the `cyan` color extension in [`tailwind.config.js`](tailwind.config.js).
 
+### Network documentation
+
+The `/network` page renders the LikeC4 model in [`src/network.c4`](src/network.c4). Edit that file to document devices and their connections; the Vite plugin updates the diagram during development.
+
 ### Adding icon names to config
 
 Icon names in `config.ts` (e.g. `"Cloud"`, `"Terminal"`) map to [Lucide React](https://lucide.dev/icons/) component names.
