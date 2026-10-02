@@ -8,6 +8,9 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), LikeC4VitePlugin({}), cloudflare(), Sitemap({ hostname: 'https://pseudocoding.xyz' })],
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
 
   build: {
     /**
@@ -17,12 +20,14 @@ export default defineConfig({
      * framer-motion is the largest dep (~250 KB gz); isolating it means that
      * code changes to components don't bust the animation library cache.
      */
-    rollupOptions: {
+    rolldownOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-icons': ['lucide-react'],
+        codeSplitting: {
+          groups: [
+            { name: 'vendor-react', test: /node_modules[\\/](react|react-dom)[\\/]/, priority: 20 },
+            { name: 'vendor-motion', test: /node_modules[\\/]framer-motion[\\/]/, priority: 10 },
+            { name: 'vendor-icons', test: /node_modules[\\/]lucide-react[\\/]/, priority: 10 },
+          ],
         },
       },
     },

@@ -1,6 +1,17 @@
 specification {
   element system
   element storage
+
+  relationship primary {
+	color green
+  }
+  relationship secondary {
+	color amber
+  }
+  relationship reverse {
+    head none
+    tail normal
+  }
 }
 
 model {
@@ -9,11 +20,84 @@ model {
     technology 'UniFi'
   }
 
-  nas = storage 'NAS' {
-    description 'Network-attached storage'
+  unifiSW24 = system 'UniFi Switch 24 Pro' {
+    description 'Layer 3 switch'
+    technology 'UniFi'
   }
 
-  unifiDreamMachine -> nas 'connects to'
+  unifiSW8 = system 'Ultra 60W' {
+    description 'Layer 2 switch'
+    technology 'UniFi'
+  }
+
+  unifiU6L1 = storage 'UniFi U6 Lite' {
+    description 'WiFi 6 Access Point'
+	technology 'Unifi'
+  }
+
+  unifiU6L2 = storage 'UniFi U6 Lite' {
+    description 'WiFi 6 Access Point'
+	technology 'Unifi'
+  }
+
+  unifiU6L3 = storage 'UniFi U6 Lite' {
+    description 'WiFi 6 Access Point'
+	technology 'Unifi'
+  }
+
+  nas = storage 'NAS' {
+    description 'Network-attached storage'
+	technology 'TrueNas'
+  }
+
+  camG5B = storage 'UniFi G5 Bullet' {
+    description '2K HD PoE Camera'
+	technology 'Unifi'
+  }
+
+  camG4B1 = storage 'UniFi G4 Bullet' {
+    description '2K HD PoE Camera'
+	technology 'Unifi'
+  }
+
+  camG4B2 = storage 'UniFi G4 Bullet' {
+    description '2K HD PoE Camera'
+	technology 'Unifi'
+  }
+
+  camG4B3 = storage 'UniFi G4 Bullet' {
+    description '2K HD PoE Camera'
+	technology 'Unifi'
+  }
+
+  camG4I = storage 'UniFi G4 Instant' {
+    description '2K HD WiFi Camera'
+	technology 'Unifi'
+  }
+
+  camG4Door = storage 'UniFi G4 Doorbell' {
+    description 'WiFi Doorbell'
+	technology 'Unifi'
+  }
+
+  unifiDreamMachine -[primary]<-> nas 'Primary'
+  unifiDreamMachine -[secondary]<-> nas 'Backup'
+  unifiDreamMachine <-> unifiSW24
+
+  unifiSW24 <-> unifiSW8
+
+  unifiSW8 -[reverse]-> camG5B
+  unifiSW8 -[reverse]-> camG4B1
+  unifiSW8 -[reverse]-> camG4B2
+  unifiSW8 -[reverse]-> camG4B3
+  unifiSW8 -[reverse]-> camG4I
+
+  unifiSW24 <-> unifiU6L1
+  unifiSW24 <-> unifiU6L2
+  unifiSW24 <-> unifiU6L3
+
+  unifiU6L1 -[reverse]-> camG4Door
+
 }
 
 views {
