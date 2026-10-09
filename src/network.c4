@@ -80,11 +80,17 @@ model {
 	technology 'Unifi'
   }
 
-  unifiDreamMachine -[primary]<-> nas 'Primary'
-  unifiDreamMachine -[secondary]<-> nas 'Backup'
-  unifiDreamMachine <-> unifiSW24
+  unifiDreamMachine -[primary]-> nas 'Primary'
+  nas -[primary]-> unifiDreamMachine 'Primary'
 
-  unifiSW24 <-> unifiSW8
+  unifiDreamMachine -[secondary]-> nas 'Backup'
+  nas -[secondary]-> unifiDreamMachine 'Backup'
+
+  unifiDreamMachine -> unifiSW24
+  unifiSW24 -> unifiDreamMachine
+
+  unifiSW24 -> unifiSW8
+  unifiSW8 -> unifiSW24
 
   unifiSW8 -[reverse]-> camG5B
   unifiSW8 -[reverse]-> camG4B1
@@ -92,9 +98,14 @@ model {
   unifiSW8 -[reverse]-> camG4B3
   unifiSW8 -[reverse]-> camG4I
 
-  unifiSW24 <-> unifiU6L1
-  unifiSW24 <-> unifiU6L2
-  unifiSW24 <-> unifiU6L3
+  unifiSW24 -> unifiU6L1
+  unifiU6L1 -> unifiSW24
+
+  unifiSW24 -> unifiU6L2
+  unifiU6L2 -> unifiSW24
+
+  unifiSW24 -> unifiU6L3
+  unifiU6L3 -> unifiSW24
 
   unifiU6L1 -[reverse]-> camG4Door
 
