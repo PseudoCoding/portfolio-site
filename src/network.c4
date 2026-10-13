@@ -15,12 +15,12 @@ specification {
 }
 
 model {
-  unifiDreamMachine = system 'UniFi Dream Machine' {
+  unifiDreamMachine = system 'Dream Machine Pro' {
     description 'Home network gateway and controller'
     technology 'UniFi'
   }
 
-  unifiSW24 = system 'UniFi Switch 24 Pro' {
+  unifiSW24 = system 'Switch 24 Pro' {
     description 'Layer 3 switch'
     technology 'UniFi'
   }
@@ -30,54 +30,59 @@ model {
     technology 'UniFi'
   }
 
-  unifiU6L1 = storage 'UniFi U6 Lite' {
+  unifiU6L1 = storage 'U6 Lite' {
     description 'WiFi 6 Access Point'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  unifiU6L2 = storage 'UniFi U6 Lite' {
+  unifiU6L2 = storage 'U6 Lite' {
     description 'WiFi 6 Access Point'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  unifiU6L3 = storage 'UniFi U6 Lite' {
+  unifiU6L3 = storage 'U6 Lite' {
     description 'WiFi 6 Access Point'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
   nas = storage 'NAS' {
     description 'Network-attached storage'
-	technology 'TrueNas'
+	  technology 'TrueNas'
   }
 
-  camG5B = storage 'UniFi G5 Bullet' {
+  proxmox = system 'Server' {
+    description 'Virtualization Server'
+    technology 'Proxmox'
+  }
+
+  camG5B = storage 'G5 Bullet' {
     description '2K HD PoE Camera'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  camG4B1 = storage 'UniFi G4 Bullet' {
+  camG4B1 = storage 'G4 Bullet' {
     description '2K HD PoE Camera'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  camG4B2 = storage 'UniFi G4 Bullet' {
+  camG4B2 = storage 'G4 Bullet' {
     description '2K HD PoE Camera'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  camG4B3 = storage 'UniFi G4 Bullet' {
+  camG4B3 = storage 'G4 Bullet' {
     description '2K HD PoE Camera'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  camG4I = storage 'UniFi G4 Instant' {
+  camG4I = storage 'G4 Instant' {
     description '2K HD WiFi Camera'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
-  camG4Door = storage 'UniFi G4 Doorbell' {
+  camG4Door = storage 'G4 Doorbell' {
     description 'WiFi Doorbell'
-	technology 'Unifi'
+	  technology 'Unifi'
   }
 
   unifiDreamMachine -[primary]-> nas 'Primary'
@@ -85,6 +90,8 @@ model {
 
   unifiDreamMachine -[secondary]-> nas 'Backup'
   nas -[secondary]-> unifiDreamMachine 'Backup'
+
+  unifiSW24 -> proxmox
 
   unifiDreamMachine -> unifiSW24
   unifiSW24 -> unifiDreamMachine

@@ -12,7 +12,7 @@ export function NetworkPage() {
           </p>
         </header>
 
-        <section aria-label="Home network architecture" className="h-[min(72vh,760px)] min-h-[440px] overflow-hidden rounded-lg border border-slate-700 bg-white">
+        <section aria-label="Home network architecture" className="h-[min(72vh,760px)] min-h-[440px] overflow-hidden rounded-lg border border-slate-700/50 bg-slate-900/40 shadow-lg shadow-slate-950/20 backdrop-blur-sm">
           <LikeC4View viewId="network" colorScheme="dark" />
         </section>
       </div>
